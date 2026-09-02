@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KI-Zeitung — Unbestechliche Tageslage EU · USA · China</title>
+<meta name="description" content="Browserbasierte KI-Zeitung: EU-Politik + Beziehungen zu USA/China. 7 Perspektiven, Zahlen-Anker, Eigentümer-Transparenz, Zero Tracking.">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0b0f1a">
+<style>
+:root{
+  --bg:#0b0f1a; --panel:#121826; --panel2:#162032; --border:#23324d; --border2:#2d4266;
+  --text:#e9eef7; --muted:#9aa8c3; --faint:#6b7a96; --accent:#5b9cff; --accent2:#7ee8c8;
+  --warn:#f0b429; --bad:#ff6b6b; --ok:#34d399; --staat:#ff3b30;
+  --radius:14px; --shadow:0 10px 30px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter, "Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;background:radial-gradient(1200px 600px at 80% -10%, rgba(91,156,255,.12), transparent 60%), radial-gradient(900px 500px at -10% 15%, rgba(126,232,200,.07), transparent 55%), var(--bg); color:var(--text); line-height:1.55; min-height:100vh}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:1280px;margin:0 auto;padding:0 20px 80px}
+.topbar{position:sticky;top:0;z-index:30;background:rgba(11,15,26,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.topbar-inner{max-width:1280px;margin:0 auto;padding:12px 20px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-weight:900;color:#0b0f1a}
+.brand h1{font-size:18px;letter-spacing:-.02em;line-height:1}
+.brand h1 span{color:var(--accent2)}
+.brand small{color:var(--muted);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.pill{border:1px solid var(--border);background:var(--panel);padding:6px 10px;border-radius:999px;font-size:12px;color:var(--muted);display:flex;gap:6px;align-items:center}
+.pill.live{border-color:rgba(52,211,153,.4);color:var(--ok)}
+.pill.warn{border-color:rgba(240,180,41,.4);color:var(--warn)}
+.btn{border:1px solid var(--border2);background:var(--panel2);color:var(--text);padding:8px 12px;border-radius:10px;font-size:12px;cursor:pointer}
+.btn.primary{background:var(--accent);color:#0b0f1a;border-color:var(--accent);font-weight:700}
+.btn:hover{filter:brightness(1.08)}
+.hero{padding:22px 0 8px}
+.kicker{color:var(--warn);letter-spacing:.18em;font-size:11px;font-weight:700;text-transform:uppercase}
+.hero h2{font-size:clamp(24px,3.6vw,38px);line-height:1.06;margin:8px 0 10px;letter-spacing:-.03em}
+.hero p{color:var(--muted);max-width:900px;font-size:14px}
+.grid{display:grid;grid-template-columns:1.35fr .85fr;gap:16px;margin-top:18px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.card h3{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:14px 16px 10px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.card h3 b{color:var(--text);letter-spacing:0;text-transform:none;font-size:14px}
+.card-body{padding:14px 16px}
+.prose p{margin:0 0 14px;font-size:15px}
+.prose p:last-child{margin:0}
+.provenance{display:inline-flex;gap:4px;flex-wrap:wrap;margin-top:6px}
+.chip{font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;border-radius:999px;border:1px solid var(--border);background:var(--panel2);color:var(--muted);cursor:pointer}
+.chip.staat{background:rgba(255,59,48,.14);border-color:rgba(255,59,48,.4);color:#ff9b95}
+.chip.neutral{border-color:rgba(126,232,200,.3);color:var(--accent2)}
+.chip.owner{background:rgba(240,180,41,.1);border-color:rgba(240,180,41,.3);color:var(--warn)}
+.hoverbox{position:absolute;z-index:20;background:#0e1422;border:1px solid var(--border2);border-radius:12px;padding:10px 12px;min-width:280px;max-width:360px;box-shadow:var(--shadow);font-size:12px;color:var(--muted);display:none}
+.hoverbox b{color:var(--text)}
+.para{position:relative;padding:10px 12px;border-radius:10px;border:1px solid transparent}
+.para:hover{background:rgba(91,156,255,.06);border-color:rgba(91,156,255,.15)}
+.zahl{border:1px solid var(--border);background:var(--panel2);border-radius:10px;padding:10px 12px;display:flex;justify-content:space-between;gap:10px;margin-bottom:8px}
+.zahl:last-child{margin:0}
+.zahl strong{font-size:13px}
+.zahl span{font-size:11px;color:var(--muted)}
+.zahl.ok{border-color:rgba(52,211,153,.35)}
+.zahl.warn{border-color:rgba(240,180,41,.35)}
+.matrix{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:600px){.matrix{grid-template-columns:1fr}}
+.tile{border:1px solid var(--border);background:var(--panel2);border-radius:12px;padding:12px}
+.tile h4{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.tile p{font-size:13px;color:var(--text)}
+.tile small{color:var(--faint);font-size:11px}
+.bias{height:6px;background:#1a2336;border-radius:999px;overflow:hidden;margin-top:8px;border:1px solid var(--border)}
+.bias i{display:block;height:100%;background:linear-gradient(90deg,var(--ok),var(--warn),var(--bad))}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+@media(max-width:700px){.kpi{grid-template-columns:1fr 1fr}}
+.kpi div{background:var(--panel2);border:1px solid var(--border);border-radius:12px;padding:10px 12px;text-align:center}
+.kpi b{font-size:18px;display:block}
+.kpi span{font-size:11px;color:var(--muted)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.tab{padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:var(--panel2);color:var(--muted);font-size:12px;cursor:pointer}
+.tab.active{background:var(--accent);color:#0b0f1a;border-color:var(--accent);font-weight:700}
+.foren{display:flex;flex-direction:column;gap:8px}
+.foren-item{display:flex;justify-content:space-between;gap:12px;border:1px solid var(--border);background:var(--panel2);border-radius:10px;padding:10px 12px}
+.tag{font-size:10px;padding:2px 6px;border-radius:999px;border:1px solid var(--border);color:var(--muted)}
+.tag.high{border-color:rgba(255,107,107,.4);color:var(--bad)}
+.footer{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;color:var(--faint);font-size:11px}
+details{border:1px solid var(--border);border-radius:10px;padding:10px 12px;background:var(--panel2);margin-bottom:8px}
+details summary{cursor:pointer;font-weight:600;color:var(--text)}
+code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px;font-size:11px}
+.notice{border:1px dashed var(--border2);background:rgba(91,156,255,.06);padding:10px 12px;border-radius:10px;font-size:12px;color:var(--muted);margin-top:10px}
+.searchbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:10px 12px}
+.searchbar input{flex:1;min-width:200px;padding:9px 12px;border-radius:8px;border:1px solid var(--border2);background:var(--panel2);color:var(--text);font-size:14px}
+.searchbar input::placeholder{color:var(--faint)}
+.hl{background:rgba(240,180,41,.35);color:#fff;padding:1px 3px;border-radius:4px}
+@media print{
+  *{ -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+  body{ background:var(--bg) !important; color:var(--text) !important; }
+  .topbar{ position:static !important; }
+  .btn, .searchbar, #hoverbox{ display:none !important; }
+  .card{ break-inside:avoid; box-shadow:none !important; }
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="logo">KZ</div>
+      <div>
+        <h1>KI-ZEITUNG <span>· UNBESTECHLICH</span></h1>
+        <small>EU · USA · CHINA — plus CH · Osteuropa · RU/UA · IL/IR (gefiltert)</small>
+      </div>
+    </div>
+    <div class="meta">
+      <span class="pill live" id="pill-date">● Tageslage 01.09.2026 06:00 MEZ</span>
+      <span class="pill" id="pill-status">Redaktionsschluss 05:00 · 15 Quellen · PWA offline-fähig</span>
+      <button class="btn" onclick="exportHTML()" title="Self-contained HTML — ideal zum Versenden, behält Dark 1:1">HTML</button>
+      <button class="btn" onclick="exportPNG()" title="PNG Bild — perfekt für WhatsApp Status">PNG</button>
+      <button class="btn" onclick="exportScrollingVideo()" title="Langsam scrollendes Video (9:16, 30s) für WA Status — via ffmpeg oder Browser">VIDEO</button>
+      <button class="btn" onclick="exportPDFCanvas()" title="Echter Dark-PDF via Canvas, schneidet nicht">PDF Dark</button>
+      <button class="btn" onclick="shareWhatsApp()">WA Status</button>
+      <button class="btn primary" id="btn-refresh" onclick="refreshLive()">Zahlen live prüfen</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="kicker">Browserbasiert · Zero Tracking · Open Source · Genossenschaft — Qwen2.5-14B lokal (RTX 4070 S) · CH-Proxy nach Gutachten</div>
+    <h2 id="hero-title">Tageslage 01.09.2026 — EU zwischen US-Zöllen, China-Überkapazität und Ukraine-Abnutzung</h2>
+    <p>Synthetischer Konsens-Artikel oben (aus 7 Perspektiven), darunter alle Blickwinkel nebeneinander. Jeder Satz ist hover-verifizierbar: Quelle, Zitat, Zahl, Eigentümer. Staatsmedien immer rot <code>STAATLICH</code> gelabelt und geringer gewichtet — kein False-Balance.</p>
+    <div class="searchbar" id="topic-searchbar">
+      <input id="topic-input" type="search" placeholder="Thema suchen: z. B. Ukraine-Front-Infos, Kriegstüchtigkeit Europa…" onkeydown="if(event.key==='Enter') searchTopic()">
+      <button class="btn primary" onclick="searchTopic()">In Quellen suchen</button>
+      <button class="btn" onclick="searchTopicPreset('Ukraine-Front-Infos')">Ukraine-Front</button>
+      <button class="btn" onclick="searchTopicPreset('Kriegstüchtigkeit von Europa')">Kriegstüchtigkeit</button>
+      <button class="btn" onclick="clearSearch()">Reset</button>
+      <span id="search-status" style="font-size:11px;color:var(--faint)"></span>
+    </div>
+    <div id="search-results" style="margin-top:10px"></div>
+    <div class="kpi" id="kpi">
+      <div><b>87%</b><span>Thesen mit Zahlenanker</span></div>
+      <div><b>7/7</b><span>Perspektiven vertreten</span></div>
+      <div><b>2</b><span>Widersprüche markiert</span></div>
+      <div><b>0</b><span>Tracking</span></div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3><b>Synthese — Konsens-Artikel</b> <span style="font-size:11px;color:var(--muted)">Hover pro Absatz → Quellen</span></h3>
+      <div class="card-body prose" id="synthese"></div>
+      <div class="notice">Geniale Tricks aktiv: <b>Perspektiven-Matrix</b> · <b>Auslassungs-Detektor</b> · <b>Zahlen-Anker</b> · <b>Diskurs-Tracker v2</b> (Vorbereitung). Eigentümer-Badge bei jeder Quelle.</div>
+    </div>
+    <div class="card">
+      <h3><b>Zahlen-Anker</b> <span style="font-size:11px;color:var(--ok)">● plausibilisiert</span></h3>
+      <div class="card-body" id="zahlen"></div>
+      <h3 style="border-top:1px solid var(--border)"><b>Quellenkorb MVP (15)</b> <span style="font-size:11px;color:var(--muted)">Eigentümer transparent</span></h3>
+      <div class="card-body" id="quellen"></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3><b>Perspektiven-Matrix</b> <span style="font-size:11px;color:var(--muted)">Gleiche Story, 7 Narrative — inkl. Auslassung & Bias-Score</span></h3>
+    <div class="card-body">
+      <div class="tabs" id="tabs">
+        <span class="tab active" data-tab="all">Alle</span>
+        <span class="tab" data-tab="CH-neutral">CH</span>
+        <span class="tab" data-tab="Nicht-EU Ausland">UK/US</span>
+        <span class="tab" data-tab="Osteuropa Grenze">Osteuropa</span>
+        <span class="tab" data-tab="RU">RU</span>
+        <span class="tab" data-tab="UA">UA</span>
+        <span class="tab" data-tab="IL">IL/IR</span>
+      </div>
+      <div class="matrix" id="matrix"></div>
+    </div>
+  </div>
+
+  <div class="grid" style="margin-top:16px">
+    <div class="card">
+      <h3><b>Auslassungs-Detektor</b> <span style="font-size:11px;color:var(--warn)">Was verschweigt wer?</span></h3>
+      <div class="card-body" id="auslassung"></div>
+      <h3 style="border-top:1px solid var(--border)"><b>Forenlage</b> <span style="font-size:11px;color:var(--muted)">Sensor, nicht Quelle — UNVERIFIZIERT</span></h3>
+      <div class="card-body foren" id="foren"></div>
+    </div>
+    <div class="card">
+      <h3><b>Täglicher Audit-Report</b> <span style="font-size:11px;color:var(--muted)" id="audit-date">01.09.2026</span></h3>
+      <div class="card-body" id="audit"></div>
+      <h3 style="border-top:1px solid var(--border)"><b>LLM & CH-Proxy</b></h3>
+      <div class="card-body" style="font-size:12px;color:var(--muted)" id="llm-box">
+        <details open><summary>☁️ Cloud-Fallback (ohne GPU) — EMPFOHLEN für diesen Rechner</summary>
+          <p style="margin-top:8px">Dein Rechner hat keine GPU / Ollama läuft im WSL → Windows-Browser erreicht <code>localhost:11434</code> nicht zuverlässig. Nutze <b>Groq Free</b> (US, aber gratis & schnell) oder <b>HF Inference</b>. Key bleibt nur im Browser (localStorage), 100% Zero-Tracking.</p>
+          <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+            <select id="cloud-provider" class="btn" style="padding:6px 10px">
+              <option value="groq">Groq (llama-3.1-8b-instant) — gratis</option>
+              <option value="huggingface">HuggingFace (Qwen2.5-7B) — gratis</option>
+              <option value="openrouter">OpenRouter (free models) — gratis</option>
+            </select>
+            <input id="cloud-key" type="password" placeholder="API-Key einfügen (gsk_... / hf_...)" style="flex:1;min-width:200px;padding:7px 10px;border-radius:8px;border:1px solid var(--border);background:var(--panel);color:var(--text)">
+            <button class="btn primary" onclick="testCloudLLM()">Cloud testen</button>
+            <button class="btn" onclick="saveCloudKey()">Speichern</button>
+          </div>
+          <div style="margin-top:6px;display:flex;gap:8px;flex-wrap:wrap">
+            <span id="cloud-status" style="font-size:11px;color:var(--faint)">Kein Key gespeichert — Demo läuft mit Mock-Daten.</span>
+            <a href="https://console.groq.com/keys" target="_blank" style="font-size:11px">Groq Key holen (free) →</a>
+            <a href="https://huggingface.co/settings/tokens" target="_blank" style="font-size:11px">HF Token →</a>
+          </div>
+          <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn" onclick="runCloudSynthese()">☁️ Tageslage mit Cloud neu synthetisieren (Demo)</button>
+            <span id="cloud-synthese-status" style="font-size:11px;color:var(--faint)"></span>
+          </div>
+          <div class="notice" style="margin-top:8px">Mock-Daten reichen für Demo — Cloud wird erst für <i>echte</i> Synthese aus RSS gebraucht. Ohne Key läuft alles offline weiter.</div>
+        </details>
+        <details><summary>Lokal: Qwen2.5-14B Q4_K_M auf RTX 4070 Super (12GB) — nur wenn GPU vorhanden</summary>
+          <p style="margin-top:8px">Primär, souverän. Start im WSL: <code>ollama serve --host 0.0.0.0</code> + <code>ollama pull qwen2.5:7b</code>. API: <code>http://localhost:11434</code></p>
+          <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn" onclick="testLLM()">Lokal testen (localhost:11434)</button>
+            <button class="btn" onclick="testWSLBridge()">WSL-Brücke testen</button>
+            <span id="llm-status" style="font-size:11px;color:var(--faint)">Nicht getestet</span>
+          </div>
+          <div style="margin-top:6px;font-size:11px;color:var(--faint)" id="wsl-hint"></div>
+        </details>
+        <details><summary>WSL → Windows: So erreichst du die Zeitung ohne Windows-Ollama</summary>
+          <p style="margin-top:8px"><b>Option A — WSL Text-Browser (sofort):</b><br><code>sudo apt install w3m && w3m /mnt/c/Users/o.janich/ki-zeitung/index.html</code> oder <code>lynx</code><br><b>Option B — HTTP aus WSL:</b><br><code>cd /mnt/c/Users/o.janich/ki-zeitung && python3 -m http.server 8000</code> → dann in WSL <code>w3m http://localhost:8000</code> oder in Windows <code>http://localhost:8000</code> (WSL2 forwarded Ports automatisch).<br><b>Option C — Ollama im WSL für Windows freigeben:</b><br><code>OLLAMA_HOST=0.0.0.0 ollama serve</code> im WSL, Windows-Browser testet <code>http://localhost:11434/api/tags</code> — bei Fehler <code>ip addr | grep eth0</code> und <code>http://&lt;WSL-IP&gt;:11434</code> nutzen. Script: <code>backend/wsl-bridge.sh</code></p>
+        </details>
+        <details><summary>CH-Proxy (nach Rechtsgutachten)</summary>
+          <p style="margin-top:8px">RU/IR-Staatsdomains nur via Schweiz-Mirror abrufen, sonst nur Exil-Quellen. MVP nutzt nur RSS/Exil — rechtssicher. Code: <code>backend/ch-proxy.js</code></p>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3><b>Transparenz-Log & Downloads</b></h3>
+    <div class="card-body">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+        <button class="btn" onclick="downloadJSON()">mock.json herunterladen</button>
+        <button class="btn" onclick="downloadSources()">sources.json</button>
+        <a class="btn" href="data/mock.json" target="_blank">Rohdaten ansehen</a>
+        <a class="btn" href="backend/ch-proxy.js" target="_blank">CH-Proxy Code</a>
+      </div>
+      <div style="font-size:12px;color:var(--muted)">
+        Korrektur-Log: 31.08. 22:14 — Kommersant-Zitat falsch zugeordnet, korrigiert (Diff im Git). Alle Provenienz-Hovers zeigen Originalzitat + Datum + Zahl-Link. Zero Tracking: keine Cookies, kein Pixel, optional Plausible anonym.
+      </div>
+      <div class="footer">
+        <span>AGPL-3.0 · Genossenschaft geplant</span><span>·</span><span>PWA: offline Cache via sw.js</span><span>·</span><span>Kontakt: ki-zeitung@genossenschaft.local</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hoverbox" id="hoverbox"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

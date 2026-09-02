@@ -1,0 +1,21 @@
+[
+  {"id":"nzz","name":"Neue Zürcher Zeitung","group":"CH-neutral","country":"CH","lang":"de","type":"neutral","owner":"NZZ-Mediengruppe (Aktionariat, unabhängig)","badge":"NEUTRAL","rss":"https://www.nzz.ch/recent.rss","paywall":true},
+  {"id":"srf","name":"SRF News","group":"CH-neutral","country":"CH","lang":"de","type":"neutral","owner":"SRG SSR (öffentlich, Gebühren)","badge":"NEUTRAL","rss":"https://www.srf.ch/news/bnf/rss/1646","paywall":false},
+  {"id":"watson_ch","name":"Watson CH","group":"CH-neutral","country":"CH","lang":"de","type":"neutral","owner":"CH Media / FixxPunkt","badge":"NEUTRAL","rss":"https://www.watson.ch/rss","paywall":false},
+  {"id":"guardian","name":"The Guardian","group":"Nicht-EU Ausland","country":"GB","lang":"en","type":"kritisch","owner":"Scott Trust Ltd. (Stiftung)","badge":"STIFTUNG","rss":"https://www.theguardian.com/world/rss","paywall":false},
+  {"id":"ft","name":"Financial Times","group":"Nicht-EU Ausland","country":"GB","lang":"en","type":"kritisch","owner":"Nikkei Inc. (JP-Konzern)","badge":"KONZERN","rss":"https://www.ft.com/rss/world","paywall":true},
+  {"id":"nyt","name":"New York Times","group":"Nicht-EU Ausland","country":"US","lang":"en","type":"kritisch","owner":"Ochs-Sulzberger Family + Public","badge":"FAMILIE","rss":"https://rss.nytimes.com/services/xml/rss/nyt/World.xml","paywall":true},
+  {"id":"wyborcza","name":"Gazeta Wyborcza","group":"Osteuropa Grenze","country":"PL","lang":"pl","type":"kritisch","owner":"Agora S.A.","badge":"KRITISCH","rss":"https://wyborcza.pl/rss/RSS/wyborcza.xml","paywall":true},
+  {"id":"delfi","name":"Delfi (Baltikum)","group":"Osteuropa Grenze","country":"LT","lang":"en","type":"kritisch","owner":"Ekspress Grupp (EE)","badge":"KRITISCH","rss":"https://www.delfi.lt/rss/feeds/daily.xml","paywall":false},
+  {"id":"helsinki","name":"Helsingin Sanomat","group":"Osteuropa Grenze","country":"FI","lang":"fi","type":"neutral","owner":"Sanoma Oyj","badge":"NEUTRAL","rss":"https://www.hs.fi/rss/tuoreimmat/","paywall":true},
+  {"id":"hotnews","name":"HotNews.ro","group":"Osteuropa Grenze","country":"RO","lang":"ro","type":"kritisch","owner":"Privat (unabhängig)","badge":"KRITISCH","rss":"https://hotnews.ro/rss","paywall":false},
+  {"id":"meduza","name":"Meduza (Exil RU)","group":"RU-kritisch","country":"RU-exil","lang":"ru","type":"kritisch","owner":"Exil-Redaktion Riga (unabhängig)","badge":"EXIL-KRITISCH","rss":"https://meduza.io/rss2/all","paywall":false},
+  {"id":"novaya","name":"Novaya Gazeta Europe","group":"RU-kritisch","country":"RU-exil","lang":"ru","type":"kritisch","owner":"Exil-Redaktion, Mitarbeiter + Stiftung","badge":"EXIL-KRITISCH","rss":"https://novayagazeta.eu/rss","paywall":false},
+  {"id":"kommersant","name":"Kommersant","group":"RU-staatlich-nah","country":"RU","lang":"ru","type":"staatlich-nah","owner":"Alischer Usmanow-nah (Konzern)","badge":"STAATLICH-NAH","rss":"https://www.kommersant.ru/RSS/news.xml","paywall":false},
+  {"id":"pravda_ua","name":"Ukrainska Pravda","group":"UA-kritisch","country":"UA","lang":"uk","type":"kritisch","owner":"Privat (Dragon Capital)","badge":"KRITISCH","rss":"https://www.pravda.com.ua/rss/","paywall":false},
+  {"id":"kyivind","name":"Kyiv Independent","group":"UA-kritisch","country":"UA","lang":"en","type":"kritisch","owner":"NGO + Crowdfunding (unabhängig)","badge":"CROWDFUND","rss":"https://kyivindependent.com/feed/","paywall":false},
+  {"id":"haaretz","name":"Haaretz","group":"IL-kritisch","country":"IL","lang":"en","type":"kritisch","owner":"Schocken Family + DuMont","badge":"KRITISCH","rss":"https://www.haaretz.com/cmlink/haaretz-news-rss-1.559184","paywall":true},
+  {"id":"timesil","name":"Times of Israel","group":"IL-neutral","country":"IL","lang":"en","type":"neutral","owner":"Privat (Mirrer)","badge":"NEUTRAL","rss":"https://www.timesofisrael.com/feed/","paywall":false},
+  {"id":"iran_intl","name":"Iran International (Exil)","group":"IR-kritisch","country":"IR-exil","lang":"fa","type":"kritisch","owner":"Exil London (Volant Media)","badge":"EXIL-KRITISCH","rss":"https://www.iranintl.com/en/rss","paywall":false},
+  {"id":"tasnim","name":"Tasnim News","group":"IR-staatlich","country":"IR","lang":"fa","type":"staatlich","owner":"IRGC-nah (staatlich)","badge":"STAATLICH","rss":"https://www.tasnimnews.com/en/rss/feed/story/allStories","paywall":false}
+]

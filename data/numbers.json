@@ -1,0 +1,10 @@
+{
+  "live_endpoints": {
+    "eurostat_hicp": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hicp_manr?format=JSON&geo=EU27_2020&coicop=CP00&unit=RCH_A",
+    "ecb_rates": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html",
+    "bruegel_gas": "https://www.bruegel.org/dataset/european-natural-gas-imports",
+    "acled": "https://acleddata.com/data-export-tool/",
+    "unhcr": "https://data.unhcr.org/en/situations/ukraine"
+  },
+  "fallback": "data/mock.json -> zahlenanker"
+}
