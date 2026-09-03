@@ -104,8 +104,15 @@ async function aktualisiere(){
         warn.textContent='Cloud Synthese fehlgeschlagen — nutze Mock, Key unten prüfen'; document.body.appendChild(warn); setTimeout(()=>warn.remove(),2800);
       }
     } else {
-      // Ohne Key: zeige bleibenden Hinweis, Synthese bleibt Mock aber Datum neu
-      console.log('Kein Cloud-Key — Synthese bleibt Mock (Datum aktualisiert). Key unten im hellgelben Feld für echte Neufassung.');
+      // Ohne Key: lokale Aktualisierung sichtbar machen (Mock bleibt, aber Zeitstempel)
+      const now=new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});
+      const dstrNow=DATA.tageslage.date.split('-')[2]+'.'+DATA.tageslage.date.split('-')[1]+'.';
+      // Erste Synthese leicht anreichern, damit sichtbar neu
+      if(DATA.tageslage.synthese[0] && !DATA.tageslage.synthese[0].text.includes('[Stand')){
+        DATA.tageslage.synthese[0].text=DATA.tageslage.synthese[0].text.replace(/\.$/,'')+' [Stand '+dstrNow+' '+now+'].';
+      }
+      const warn=document.createElement('div'); warn.style.cssText='position:fixed;left:50%;bottom:108px;transform:translateX(-50%);background:#162032;border:1px solid #f0b429;color:#fff9c4;padding:6px 12px;border-radius:999px;font-size:11px;z-index:50';
+      warn.textContent='Ohne API-Key: Mock-Datum aktualisiert, Synthese bleibt 03.09. — Key unten im hellgelben Feld für echte Neufassung'; document.body.appendChild(warn); setTimeout(()=>warn.remove(),3200);
     }
     const ds=DATA.tageslage.date.split('-'); const dstr=ds[2]+'.'+ds[1]+'.'+ds[0];
     if(pill) pill.textContent='● Tageslage '+dstr+' 06:00 MEZ ✓'+(synthUpdated?' ☁':'');
