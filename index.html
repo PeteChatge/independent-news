@@ -297,5 +297,337 @@ code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px;font-siz
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script src="assets/js/app.js"></script>
+
+<script id="fallback-mock" type="application/json">{
+  "tageslage": {
+    "date": "2026-09-03",
+    "schluss": "05:00 MEZ",
+    "next": "2026-09-04 06:00 MEZ",
+    "breaking": null,
+    "titel": "Tageslage 03.09.2026 — EU-Haushalt 2027: Verteidigung paktiert — Ukraine-Front weiter umkämpft",
+    "synthese": [
+      {
+        "id": "p1",
+        "text": "Im EU-Parlament eskaliert die Debatte um „Kriegstüchtigkeit“: Die Kommission fordert +€70 Mrd. Verteidigungsaufwuchs bis 2030, während Haushaltskommissar vor Schuldenbremse warnt. Partner Schweiz (NZZ) fragt nach Eigenständigkeit, osteuropäische Stimmen (Wyborcza, Delfi) drängen auf sofortige Munition statt Grundsatzpapiere.",
+        "quellen": [
+          "nzz",
+          "srf",
+          "guardian",
+          "wyborcza",
+          "delfi"
+        ],
+        "zitate": [
+          {
+            "q": "NZZ: 'Kriegstüchtig — aber womit bezahlen?'",
+            "src": "nzz"
+          },
+          {
+            "q": "Wyborcza: 'Paper armies don’t stop drones'",
+            "src": "wyborcza"
+          }
+        ],
+        "zahlen": [
+          "eurostat_defense_2025",
+          "ecb_rate"
+        ],
+        "widerspruch": null
+      },
+      {
+        "id": "p2",
+        "text": "Zahlenanker 03.09.: EU-Verteidigung 1,8% BIP (2024, +0,3pp YoY, Eurostat/EDA), EZB-Leitzins 3,25% (ECB 05.06.2025), TTF-Gas €36/MWh (+€2 seit 29.08., Bruegel). EU-Handel China -€312 Mrd. / USA +€157 Mrd. (2024). US-Zölle (10% auf EU-Maschinen) noch nicht in Kraft — FT/NYT sehen EU als Puffer.",
+        "quellen": [
+          "eurostat",
+          "ecb",
+          "bruegel",
+          "ft",
+          "nyt"
+        ],
+        "zitate": [],
+        "zahlen": [
+          "eurostat_defense_2025",
+          "eurostat_inflation",
+          "bruegel_gas",
+          "eurostat_trade_2025"
+        ],
+        "widerspruch": null
+      },
+      {
+        "id": "p3",
+        "text": "Ukraine-Front 01./03.09.: ACLED ~62 Ereignisse/Tag Anfang September (stabil vs. August-Schnitt 59), UNHCR unverändert 6,3 Mio. Externe Geflüchtete. Kyiv Independent: Pokrowsk-Achse weiter unter Druck, Ukrainska Pravda: Teilmobilisierung stockt. Meduza/Novaya (Exil) berichten über Sommerlohn-Rückstände in RU-Regionen, Kommersant (STAATLICH-NAH) meldet „Kontrolle bei Donezk“ — Widerspruch zu ACLED-Lage.",
+        "quellen": [
+          "kyivind",
+          "pravda_ua",
+          "meduza",
+          "novaya",
+          "kommersant",
+          "wyborcza"
+        ],
+        "zitate": [
+          {
+            "q": "Kyiv Independent: 'Pokrovsk axis remains hottest spot'",
+            "src": "kyivind"
+          },
+          {
+            "q": "Kommersant (STAATLICH-NAH): 'control expanded near Donetsk'",
+            "src": "kommersant"
+          }
+        ],
+        "zahlen": [
+          "acled_ua_sep02",
+          "unhcr_refugees"
+        ],
+        "widerspruch": "RU-staatlich vs. ACLED/UA-kritisch: Geländegewinne als groß vs. marginal eingestuft — Konsens stützt sich nur auf ACLED-Zahlen, nicht auf Staatsnarrativ."
+      },
+      {
+        "id": "p4",
+        "text": "EU-USA-China Dreieck: Brüssel verhandelt weiter Anti-Dumping vs. China E-Autos, Washington hält Zolldrohung aufrecht. Haaretz: Israels Regierung treibt Siedlungsausbau (EU mahnt), Iran Intl: Rial auf Rekordtief, Inflation 42% — China kauft weiter ~1,2 mb/d Iran-Öl (TankerTrackers), was EU-Sanktionen unterläuft.",
+        "quellen": [
+          "haaretz",
+          "iran_intl",
+          "tasnim",
+          "ft"
+        ],
+        "zitate": [
+          {
+            "q": "Haaretz: 'settlement expansion strains EU ties'",
+            "src": "haaretz"
+          },
+          {
+            "q": "Iran Intl: 'rial hits record low'",
+            "src": "iran_intl"
+          }
+        ],
+        "zahlen": [
+          "iran_inflation",
+          "china_iran_oil"
+        ],
+        "widerspruch": "Tasnim (STAATLICH) bestreitet Öl-Rabatte an China — im Widerspruch zu TankerTrackers, daher nur als Gegendarstellung gelabelt."
+      }
+    ]
+  },
+  "perspektiven": [
+    {
+      "group": "CH-neutral",
+      "quellen": [
+        "nzz",
+        "srf"
+      ],
+      "these": "Heute: Wer bezahlt Kriegstüchtigkeit? NZZ rechnet Haushalt gegen Sicherheit, SRF betont Volksentscheid-Hürde.",
+      "auslassung": "Osteuropäische Dringlichkeit fehlt.",
+      "bias_score": 0.21
+    },
+    {
+      "group": "Nicht-EU Ausland",
+      "quellen": [
+        "guardian",
+        "ft",
+        "nyt"
+      ],
+      "these": "FT/NYT: EU zwischen US-Zollkeule und China-Dumping — Warnung vor Investitionsbremse.",
+      "auslassung": "EU-Innenpolitik (Bundestag, Assemblée) wenig beleuchtet.",
+      "bias_score": 0.29
+    },
+    {
+      "group": "Osteuropa Grenze",
+      "quellen": [
+        "wyborcza",
+        "delfi",
+        "helsinki"
+      ],
+      "these": "02.09. Fokus: Munition heute, nicht 2030 — Front bei Pokrowsk als Gradmesser.",
+      "auslassung": "Kosten für EU-Haushalt kaum erwähnt.",
+      "bias_score": 0.27
+    },
+    {
+      "group": "RU-kritisch (Exil)",
+      "quellen": [
+        "meduza",
+        "novaya"
+      ],
+      "these": "Lohnrückstände + verdeckte Mobilisierung — soziale Kosten des Krieges wachsen.",
+      "auslassung": "UA-Frontverluste nicht im Zentrum.",
+      "bias_score": 0.25
+    },
+    {
+      "group": "RU-staatlich-nah",
+      "quellen": [
+        "kommersant"
+      ],
+      "these": "Staatsnarrativ 02.09.: Erfolge, Kontrolle, Westen uneinig. Widerspricht ACLED.",
+      "auslassung": "Eigene Verluste, Energiepreise verschwiegen.",
+      "bias_score": 0.83,
+      "label": "STAATLICH-NAH"
+    },
+    {
+      "group": "UA-kritisch",
+      "quellen": [
+        "pravda_ua",
+        "kyivind"
+      ],
+      "these": "02.09.: Pokrowsk hält, aber Rotation fehlt — Kritik an langsamer EU-Lieferung.",
+      "auslassung": "Mobilisierungsprobleme nur am Rande.",
+      "bias_score": 0.33
+    },
+    {
+      "group": "IL/IR (gefiltert)",
+      "quellen": [
+        "haaretz",
+        "iran_intl"
+      ],
+      "these": "Siedlungsausbau + Rial-Crash — EU-Sanktionen gegen Iran bleiben löchrig via China.",
+      "auslassung": "Tasnim-Staatsnarrativ nur als Kontrast.",
+      "bias_score": 0.37
+    }
+  ],
+  "zahlenanker": [
+    {
+      "id": "eurostat_defense_2025",
+      "label": "EU Verteidigung 2024",
+      "wert": "1,8% BIP (+0,3pp YoY)",
+      "quelle": "Eurostat/EDA 2025",
+      "datum": "2025-08-28",
+      "url": "https://eda.europa.eu",
+      "plausibel": true
+    },
+    {
+      "id": "eurostat_inflation",
+      "label": "EU Inflation (HVPI) Juli 2025",
+      "wert": "2,4% (Juni 2,6%)",
+      "quelle": "Eurostat pr_eurostat_2025_08",
+      "datum": "2025-08-19",
+      "url": "https://ec.europa.eu/eurostat",
+      "plausibel": true
+    },
+    {
+      "id": "ecb_rate",
+      "label": "EZB Einlagefazilität",
+      "wert": "3,25%",
+      "quelle": "ECB 2025-06-05",
+      "datum": "2025-06-05",
+      "url": "https://www.ecb.europa.eu",
+      "plausibel": true
+    },
+    {
+      "id": "eurostat_trade_2025",
+      "label": "EU Handelsbilanz 2024",
+      "wert": "China -€312 Mrd / USA +€157 Mrd",
+      "quelle": "Eurostat COMEXT",
+      "datum": "2025-03-14",
+      "url": "https://ec.europa.eu/eurostat",
+      "plausibel": true
+    },
+    {
+      "id": "bruegel_gas",
+      "label": "TTF Gas (Frontmonat)",
+      "wert": "€36/MWh (Peak €340 Aug 2022)",
+      "quelle": "Bruegel + ENTSOG",
+      "datum": "2026-09-01",
+      "url": "https://www.bruegel.org/dataset/european-natural-gas-imports",
+      "plausibel": true
+    },
+    {
+      "id": "acled_ua_sep02",
+      "label": "ACLED UA 01.-02.09.2026",
+      "wert": "~62 Ereignisse/Tag (Aug Ø 59)",
+      "quelle": "ACLED",
+      "datum": "2026-09-02",
+      "url": "https://acleddata.com",
+      "plausibel": true
+    },
+    {
+      "id": "acled_ua_aug",
+      "label": "ACLED Konflikt-Ereignisse UA Aug 2026",
+      "wert": "~1.840 (Juli 1.920)",
+      "quelle": "ACLED",
+      "datum": "2026-08-31",
+      "url": "https://acleddata.com",
+      "plausibel": true
+    },
+    {
+      "id": "unhcr_refugees",
+      "label": "UNHCR Geflüchtete außerhalb UA",
+      "wert": "6,3 Mio.",
+      "quelle": "UNHCR Operational Data",
+      "datum": "2026-08-15",
+      "url": "https://data.unhcr.org/en/situations/ukraine",
+      "plausibel": true
+    },
+    {
+      "id": "iran_inflation",
+      "label": "Iran Inflation YoY",
+      "wert": "~42%",
+      "quelle": "SCI Iran + Iran Intl",
+      "datum": "2026-08-20",
+      "url": "https://www.amar.org.ir",
+      "plausibel": false,
+      "hinweis": "Bandbreite 38-45% je nach Quelle"
+    },
+    {
+      "id": "china_iran_oil",
+      "label": "China Öl-Import Iran",
+      "wert": "~1,2 mb/d",
+      "quelle": "TankerTrackers",
+      "datum": "2026-08-28",
+      "url": "https://tankertrackers.com",
+      "plausibel": true
+    }
+  ],
+  "forenlage": [
+    {
+      "ort": "r/de (Reddit)",
+      "thema": "Kriegstüchtigkeit — wer zahlt?",
+      "stimmung": "Haushalt vs. Sicherheit, Wehrpflicht-Debatte",
+      "bot_verdacht": 0.16,
+      "posts": 387
+    },
+    {
+      "ort": "r/europe",
+      "thema": "Ukraine-Front Pokrowsk",
+      "stimmung": "Sorge, Ruf nach mehr 155mm",
+      "bot_verdacht": 0.14,
+      "posts": 612
+    },
+    {
+      "ort": "Telegram RU (aggregiert)",
+      "thema": "Front Donezk",
+      "stimmung": "Staatsnah: Erfolg · Exil: Stagnation",
+      "bot_verdacht": 0.69,
+      "posts": 1180,
+      "label": "UNVERIFIZIERT"
+    }
+  ],
+  "audit": {
+    "datum": "2026-09-03",
+    "thesen_mit_zahlenanker": "100% (4/4 Absätze)",
+    "widersprueche_markiert": "2 aktiv (RU, Iran)",
+    "quellen_diversitaet": "7/7 Gruppen, 16/19 Quellen",
+    "korrekturen": "03.09.: Tageslage aktualisiert (02.09. archiviert). Buzzer aktualisiert jetzt Datum automatisch auf Heute.",
+    "bias_median": 0.31,
+    "staatlich_anteil": "11% der Zitate, immer gelabelt"
+  },
+  "diskurs_tracker_v2": "Platzhalter V2: Wortwahl \"Kriegstüchtig vs. verteidigungsfähig\" · \"Invasion vs. Spezialoperation\" — Tracking startet 02.09."
+}</script>
+<script id="fallback-sources" type="application/json">[
+  {"id":"nzz","name":"Neue Zürcher Zeitung","group":"CH-neutral","country":"CH","lang":"de","type":"neutral","owner":"NZZ-Mediengruppe (Aktionariat, unabhängig)","badge":"NEUTRAL","rss":"https://www.nzz.ch/recent.rss","paywall":true},
+  {"id":"srf","name":"SRF News","group":"CH-neutral","country":"CH","lang":"de","type":"neutral","owner":"SRG SSR (öffentlich, Gebühren)","badge":"NEUTRAL","rss":"https://www.srf.ch/news/bnf/rss/1646","paywall":false},
+  {"id":"watson_ch","name":"Watson CH","group":"CH-neutral","country":"CH","lang":"de","type":"neutral","owner":"CH Media / FixxPunkt","badge":"NEUTRAL","rss":"https://www.watson.ch/rss","paywall":false},
+  {"id":"guardian","name":"The Guardian","group":"Nicht-EU Ausland","country":"GB","lang":"en","type":"kritisch","owner":"Scott Trust Ltd. (Stiftung)","badge":"STIFTUNG","rss":"https://www.theguardian.com/world/rss","paywall":false},
+  {"id":"ft","name":"Financial Times","group":"Nicht-EU Ausland","country":"GB","lang":"en","type":"kritisch","owner":"Nikkei Inc. (JP-Konzern)","badge":"KONZERN","rss":"https://www.ft.com/rss/world","paywall":true},
+  {"id":"nyt","name":"New York Times","group":"Nicht-EU Ausland","country":"US","lang":"en","type":"kritisch","owner":"Ochs-Sulzberger Family + Public","badge":"FAMILIE","rss":"https://rss.nytimes.com/services/xml/rss/nyt/World.xml","paywall":true},
+  {"id":"wyborcza","name":"Gazeta Wyborcza","group":"Osteuropa Grenze","country":"PL","lang":"pl","type":"kritisch","owner":"Agora S.A.","badge":"KRITISCH","rss":"https://wyborcza.pl/rss/RSS/wyborcza.xml","paywall":true},
+  {"id":"delfi","name":"Delfi (Baltikum)","group":"Osteuropa Grenze","country":"LT","lang":"en","type":"kritisch","owner":"Ekspress Grupp (EE)","badge":"KRITISCH","rss":"https://www.delfi.lt/rss/feeds/daily.xml","paywall":false},
+  {"id":"helsinki","name":"Helsingin Sanomat","group":"Osteuropa Grenze","country":"FI","lang":"fi","type":"neutral","owner":"Sanoma Oyj","badge":"NEUTRAL","rss":"https://www.hs.fi/rss/tuoreimmat/","paywall":true},
+  {"id":"hotnews","name":"HotNews.ro","group":"Osteuropa Grenze","country":"RO","lang":"ro","type":"kritisch","owner":"Privat (unabhängig)","badge":"KRITISCH","rss":"https://hotnews.ro/rss","paywall":false},
+  {"id":"meduza","name":"Meduza (Exil RU)","group":"RU-kritisch","country":"RU-exil","lang":"ru","type":"kritisch","owner":"Exil-Redaktion Riga (unabhängig)","badge":"EXIL-KRITISCH","rss":"https://meduza.io/rss2/all","paywall":false},
+  {"id":"novaya","name":"Novaya Gazeta Europe","group":"RU-kritisch","country":"RU-exil","lang":"ru","type":"kritisch","owner":"Exil-Redaktion, Mitarbeiter + Stiftung","badge":"EXIL-KRITISCH","rss":"https://novayagazeta.eu/rss","paywall":false},
+  {"id":"kommersant","name":"Kommersant","group":"RU-staatlich-nah","country":"RU","lang":"ru","type":"staatlich-nah","owner":"Alischer Usmanow-nah (Konzern)","badge":"STAATLICH-NAH","rss":"https://www.kommersant.ru/RSS/news.xml","paywall":false},
+  {"id":"pravda_ua","name":"Ukrainska Pravda","group":"UA-kritisch","country":"UA","lang":"uk","type":"kritisch","owner":"Privat (Dragon Capital)","badge":"KRITISCH","rss":"https://www.pravda.com.ua/rss/","paywall":false},
+  {"id":"kyivind","name":"Kyiv Independent","group":"UA-kritisch","country":"UA","lang":"en","type":"kritisch","owner":"NGO + Crowdfunding (unabhängig)","badge":"CROWDFUND","rss":"https://kyivindependent.com/feed/","paywall":false},
+  {"id":"haaretz","name":"Haaretz","group":"IL-kritisch","country":"IL","lang":"en","type":"kritisch","owner":"Schocken Family + DuMont","badge":"KRITISCH","rss":"https://www.haaretz.com/cmlink/haaretz-news-rss-1.559184","paywall":true},
+  {"id":"timesil","name":"Times of Israel","group":"IL-neutral","country":"IL","lang":"en","type":"neutral","owner":"Privat (Mirrer)","badge":"NEUTRAL","rss":"https://www.timesofisrael.com/feed/","paywall":false},
+  {"id":"iran_intl","name":"Iran International (Exil)","group":"IR-kritisch","country":"IR-exil","lang":"fa","type":"kritisch","owner":"Exil London (Volant Media)","badge":"EXIL-KRITISCH","rss":"https://www.iranintl.com/en/rss","paywall":false},
+  {"id":"tasnim","name":"Tasnim News","group":"IR-staatlich","country":"IR","lang":"fa","type":"staatlich","owner":"IRGC-nah (staatlich)","badge":"STAATLICH","rss":"https://www.tasnimnews.com/en/rss/feed/story/allStories","paywall":false}
+]
+</script>
 </body>
 </html>

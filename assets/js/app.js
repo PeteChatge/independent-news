@@ -3,11 +3,32 @@ const $=s=>document.querySelector(s);
 const hoverbox=$('#hoverbox');
 let activeTab='all';
 
+function getFallback(id){ try{ const el=document.getElementById(id); if(!el) return null; return JSON.parse(el.textContent); }catch(e){ console.warn('Fallback',id,e); return null; } }
+async function fetchJson(url, fallbackId){
+  try{
+    const r=await fetch(url, {cache:'no-store'});
+    const txt=await r.text();
+    // Wenn Server HTML-Fehler liefert (z.B. file://, 404), beginnt mit "<" oder "E"
+    if(!r.ok || txt.trim().startsWith('<') || txt.trim().startsWith('E')) throw new Error('no json');
+    return JSON.parse(txt);
+  }catch(e){
+    const fb=getFallback(fallbackId);
+    if(fb) { console.log('Nutze Fallback',fallbackId); return fb; }
+    throw e;
+  }
+}
 async function load(){
-  const [s,d]=await Promise.all([
-    fetch('data/sources.json').then(r=>r.json()),
-    fetch('data/mock.json').then(r=>r.json())
-  ]);
+  let s,d;
+  try{
+    [s,d]=await Promise.all([
+      fetchJson('data/sources.json','fallback-sources'),
+      fetchJson('data/mock.json','fallback-mock')
+    ]);
+  }catch(e){
+    // Letzter Fallback direkt
+    s=getFallback('fallback-sources'); d=getFallback('fallback-mock');
+    if(!s||!d) throw e;
+  }
   SOURCES=s; DATA=d;
   // Falls mock älter als heute (Stand 02.09. vs heute 03.09.), beim Laden direkt auf Heute heben
   const todayLoad=new Date().toISOString().slice(0,10);
@@ -55,10 +76,16 @@ async function aktualisiere(){
     // Cache-Buster + SW-Cache umgehen
     const bust='?t='+Date.now();
     if('caches' in window){ try{ const c=await caches.open('ki-zeitung-v3-20260903'); await c.delete('data/mock.json'); await c.delete('data/mock.json'+bust); }catch(e){} }
-    const [s,d]=await Promise.all([
-      fetch('data/sources.json'+bust, {cache:'no-store'}).then(r=>r.json()),
-      fetch('data/mock.json'+bust, {cache:'no-store'}).then(r=>r.json())
-    ]);
+    let s,d;
+    try{
+      [s,d]=await Promise.all([
+        fetchJson('data/sources.json'+bust,'fallback-sources'),
+        fetchJson('data/mock.json'+bust,'fallback-mock')
+      ]);
+    }catch(e){
+      s=getFallback('fallback-sources'); d=getFallback('fallback-mock');
+      if(!s||!d) throw e;
+    }
     SOURCES=s; DATA=d;
     // Falls mock älter als heute (z.B. 02.09. vs heute 03.09.), automatisch auf Heute heben — sonst bleibt Buzzer scheinbar ohne Wirkung
     const todayISO=new Date().toISOString().slice(0,10);
