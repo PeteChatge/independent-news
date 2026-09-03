@@ -1,0 +1,8 @@
+:: Windows CMD (mit WSL-ffmpeg) - direkt copy-paste, nutzt deine neue PNG in aktuell
+wsl ffmpeg -y -loop 1 -i "/mnt/c/Users/o.janich/ki-zeitung/aktuell/KI-Zeitung-2026-09-01.png" -t 30 -vf "scale=1080:-1:flags=lanczos,crop=1080:1920:0:'(ih-1920)*t/30'" -r 30 -c:v libx264 -pix_fmt yuv420p -profile:v high -crf 23 -preset medium -movflags +faststart "/mnt/c/Users/o.janich/ki-zeitung/aktuell/KI-Zeitung-status-30s.mp4"
+
+:: Alternative: Windows CMD mit nativem ffmpeg (falls https://ffmpeg.org via gyan.dev installiert)
+ffmpeg -y -loop 1 -i "C:\Users\o.janich\ki-zeitung\aktuell\KI-Zeitung-2026-09-01.png" -t 30 -vf "scale=1080:-1:flags=lanczos,crop=1080:1920:0:'(ih-1920)*t/30'" -r 30 -c:v libx264 -pix_fmt yuv420p -profile:v high -crf 23 -preset medium -movflags +faststart "C:\Users\o.janich\ki-zeitung\aktuell\KI-Zeitung-status-30s.mp4"
+
+:: WSL Bash (in Ubuntu Terminal)
+ffmpeg -y -loop 1 -i "/mnt/c/Users/o.janich/ki-zeitung/aktuell/KI-Zeitung-2026-09-01.png" -t 30 -vf "scale=1080:-1:flags=lanczos,crop=1080:1920:0:'(ih-1920)*t/30'" -r 30 -c:v libx264 -pix_fmt yuv420p -profile:v high -crf 23 -preset medium -movflags +faststart "/mnt/c/Users/o.janich/ki-zeitung/aktuell/KI-Zeitung-status-30s.mp4"

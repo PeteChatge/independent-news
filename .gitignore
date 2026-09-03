@@ -1,0 +1,11 @@
+# OS
+.DS_Store
+Thumbs.db
+*.log
+/tmp/
+ollama.log
+# Deps
+node_modules/
+# Secrets
+.env
+*key*.txt
