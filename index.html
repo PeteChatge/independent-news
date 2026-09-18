@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>KI-Zeitung — Unbestechliche Tageslage EU · USA · China</title>
-<meta name="description" content="Browserbasierte KI-Zeitung: EU-Politik + Beziehungen zu USA/China. 7 Perspektiven, Zahlen-Anker, Eigentümer-Transparenz, Zero Tracking.">
+<meta name="description" content="Browserbasierte KI-Zeitung: EU-Politik + Beziehungen zu USA/China. 8 Perspektiven, Zahlen-Anker, Eigentümer-Transparenz, Zero Tracking.">
 <link rel="manifest" href="manifest.json">
   <link rel="icon" href="favicon.ico" sizes="any">
   <meta name="theme-color" content="#0b0f1a">
@@ -130,12 +130,12 @@ code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px;font-siz
       <div class="logo">KZ</div>
       <div>
         <h1>KI-ZEITUNG <span>· UNBESTECHLICH</span></h1>
-        <small>EU · USA · CHINA — plus CH · Osteuropa · RU/UA · IL/IR (gefiltert)</small>
+        <small>EU · USA · CHINA — plus CH · Osteuropa · RU/UA · IL/IR · KR (gefiltert)</small>
       </div>
     </div>
     <div class="meta">
       <span class="pill live" id="pill-date">● Tageslage 03.09.2026 06:00 MEZ</span>
-      <span class="pill" id="pill-status">Redaktionsschluss 05:00 · 16 Quellen · PWA offline-fähig</span>
+      <span class="pill" id="pill-status">Redaktionsschluss 05:00 · 21 Quellen · PWA offline-fähig</span>
       <button class="btn" onclick="exportHTML()" title="Self-contained HTML — ideal zum Versenden, behält Dark 1:1">HTML</button>
       <button class="btn" onclick="exportPNG()" title="PNG Bild — perfekt für WhatsApp Status">PNG</button>
       <span style="display:inline-flex;gap:4px;align-items:center;border:1px solid var(--border);background:var(--panel);padding:2px 6px;border-radius:10px">
@@ -155,7 +155,7 @@ code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px;font-siz
   <div class="hero">
     <div class="kicker">Browserbasiert · Zero Tracking · Open Source · Genossenschaft — Qwen2.5-14B lokal (RTX 4070 S) · CH-Proxy nach Gutachten</div>
     <h2 id="hero-title">Tageslage 03.09.2026 — EU-Haushalt 2027: Verteidigung paktiert — Ukraine-Front weiter umkämpft</h2>
-    <p>Synthetischer Konsens-Artikel oben (aus 7 Perspektiven), darunter alle Blickwinkel nebeneinander. Jeder Satz ist hover-verifizierbar: Quelle, Zitat, Zahl, Eigentümer. Staatsmedien immer rot <code>STAATLICH</code> gelabelt und geringer gewichtet — kein False-Balance.</p>
+    <p>Synthetischer Konsens-Artikel oben (aus 8 Perspektiven), darunter alle Blickwinkel nebeneinander. Jeder Satz ist hover-verifizierbar: Quelle, Zitat, Zahl, Eigentümer. Staatsmedien immer rot <code>STAATLICH</code> gelabelt und geringer gewichtet — kein False-Balance.</p>
     <div class="searchbar" id="topic-searchbar">
       <input id="topic-input" type="search" placeholder="Thema suchen: z. B. Ukraine-Front-Infos, Kriegstüchtigkeit Europa…" onkeydown="if(event.key==='Enter') searchTopic()">
       <button class="btn primary" onclick="searchTopic()">In Quellen suchen</button>
@@ -166,8 +166,8 @@ code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px;font-siz
     </div>
     <div id="search-results" style="margin-top:10px"></div>
     <div class="kpi" id="kpi">
-      <div><b>87%</b><span>Thesen mit Zahlenanker</span></div>
-      <div><b>7/7</b><span>Perspektiven vertreten</span></div>
+      <div><b>80%</b><span>Thesen mit Zahlenanker</span></div>
+      <div><b>8/8</b><span>Perspektiven vertreten</span></div>
       <div><b>2</b><span>Widersprüche markiert</span></div>
       <div><b>0</b><span>Tracking</span></div>
     </div>
@@ -182,13 +182,13 @@ code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px;font-siz
     <div class="card">
       <h3><b>Zahlen-Anker</b> <span style="font-size:11px;color:var(--ok)">● plausibilisiert</span></h3>
       <div class="card-body" id="zahlen"></div>
-      <h3 style="border-top:1px solid var(--border)"><b>Quellenkorb MVP (15)</b> <span style="font-size:11px;color:var(--muted)">Eigentümer transparent</span></h3>
+      <h3 style="border-top:1px solid var(--border)"><b>Quellenkorb MVP (21)</b> <span style="font-size:11px;color:var(--muted)">Eigentümer transparent</span></h3>
       <div class="card-body" id="quellen"></div>
     </div>
   </div>
 
   <div class="card" style="margin-top:16px">
-    <h3><b>Perspektiven-Matrix</b> <span style="font-size:11px;color:var(--muted)">Gleiche Story, 7 Narrative — inkl. Auslassung & Bias-Score</span></h3>
+    <h3><b>Perspektiven-Matrix</b> <span style="font-size:11px;color:var(--muted)">Gleiche Story, 8 Narrative — inkl. Auslassung & Bias-Score</span></h3>
     <div class="card-body">
       <div class="tabs" id="tabs">
         <span class="tab active" data-tab="all">Alle</span>
@@ -198,6 +198,7 @@ code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px;font-siz
         <span class="tab" data-tab="RU">RU</span>
         <span class="tab" data-tab="UA">UA</span>
         <span class="tab" data-tab="IL">IL/IR</span>
+        <span class="tab" data-tab="KR">KR</span>
       </div>
       <div class="matrix" id="matrix"></div>
     </div>
@@ -402,6 +403,29 @@ code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px;font-siz
           "china_iran_oil"
         ],
         "widerspruch": "Tasnim (STAATLICH) bestreitet Öl-Rabatte an China — im Widerspruch zu TankerTrackers, daher nur als Gegendarstellung gelabelt."
+      },
+      {
+        "id": "p5",
+        "text": "Deutschland-Innenpolitik im fremden Spiegel: Guardian und Wyborcza sehen Berlin zwischen Schuldenbremse und US-Zolldrohung eingeklemmt, die NZZ fragt nach der Reformfähigkeit des Föderalismus angesichts neuer Parteiskandale. Südkoreanische Stimmen (Hankyoreh, Kyunghyang) lesen das als Lehrstück über US-Abhängigkeit: Wer Washingtons Tech- und Rüstungsvorgaben folgt, verliere Souveränität — ein Blick, den auch die koreanische Community in Deutschland teilt.",
+        "quellen": [
+          "guardian",
+          "wyborcza",
+          "nzz",
+          "hani_en",
+          "khan_en"
+        ],
+        "zitate": [
+          {
+            "q": "Hankyoreh: 'Seoul must respond firmly to US biased claims'",
+            "src": "hani_en"
+          },
+          {
+            "q": "Guardian: 'Berlin caught between debt brake and tariffs'",
+            "src": "guardian"
+          }
+        ],
+        "zahlen": [],
+        "widerspruch": null
       }
     ]
   },
@@ -477,6 +501,16 @@ code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px;font-siz
       "these": "Siedlungsausbau + Rial-Crash — EU-Sanktionen gegen Iran bleiben löchrig via China.",
       "auslassung": "Tasnim-Staatsnarrativ nur als Kontrast.",
       "bias_score": 0.37
+    },
+    {
+      "group": "KR-kritisch",
+      "quellen": [
+        "hani_en",
+        "khan_en"
+      ],
+      "these": "Hankyoreh/Kyunghyang: US-Bündnistreue kostet Souveränität — deutsche Skandale um Tech- und Rüstungsdeals als Warnung vor Vasallentum.",
+      "auslassung": "EU-Binnenperspektive und deutsche Regierungsversion kaum abgebildet.",
+      "bias_score": 0.34
     }
   ],
   "zahlenanker": [
@@ -598,10 +632,10 @@ code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px;font-siz
   ],
   "audit": {
     "datum": "2026-09-03",
-    "thesen_mit_zahlenanker": "100% (4/4 Absätze)",
+    "thesen_mit_zahlenanker": "80% (4/5 Absätze)",
     "widersprueche_markiert": "2 aktiv (RU, Iran)",
-    "quellen_diversitaet": "7/7 Gruppen, 16/19 Quellen",
-    "korrekturen": "03.09.: Tageslage aktualisiert (02.09. archiviert). Buzzer aktualisiert jetzt Datum automatisch auf Heute.",
+    "quellen_diversitaet": "8/8 Gruppen, 18/21 Quellen",
+    "korrekturen": "03.09.: Tageslage aktualisiert (02.09. archiviert). Buzzer aktualisiert jetzt Datum automatisch auf Heute. 18.09.: KR-kritisch (Hankyoreh, Kyunghyang) + DE-Innenpolitik-Absatz p5.",
     "bias_median": 0.31,
     "staatlich_anteil": "11% der Zitate, immer gelabelt"
   },
@@ -626,7 +660,9 @@ code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px;font-siz
   {"id":"haaretz","name":"Haaretz","group":"IL-kritisch","country":"IL","lang":"en","type":"kritisch","owner":"Schocken Family + DuMont","badge":"KRITISCH","rss":"https://www.haaretz.com/cmlink/haaretz-news-rss-1.559184","paywall":true},
   {"id":"timesil","name":"Times of Israel","group":"IL-neutral","country":"IL","lang":"en","type":"neutral","owner":"Privat (Mirrer)","badge":"NEUTRAL","rss":"https://www.timesofisrael.com/feed/","paywall":false},
   {"id":"iran_intl","name":"Iran International (Exil)","group":"IR-kritisch","country":"IR-exil","lang":"fa","type":"kritisch","owner":"Exil London (Volant Media)","badge":"EXIL-KRITISCH","rss":"https://www.iranintl.com/en/rss","paywall":false},
-  {"id":"tasnim","name":"Tasnim News","group":"IR-staatlich","country":"IR","lang":"fa","type":"staatlich","owner":"IRGC-nah (staatlich)","badge":"STAATLICH","rss":"https://www.tasnimnews.com/en/rss/feed/story/allStories","paywall":false}
+  {"id":"tasnim","name":"Tasnim News","group":"IR-staatlich","country":"IR","lang":"fa","type":"staatlich","owner":"IRGC-nah (staatlich)","badge":"STAATLICH","rss":"https://www.tasnimnews.com/en/rss/feed/story/allStories","paywall":false},
+  {"id":"hani_en","name":"Hankyoreh (EN)","group":"KR-kritisch","country":"KR","lang":"en","type":"kritisch","owner":"Hankyoreh Media (~62.000 Aktionäre, unabhängig, progressiv)","badge":"PROGRESSIV","rss":"https://english.hani.co.kr/rss/","paywall":false},
+  {"id":"khan_en","name":"Kyunghyang Shinmun (EN)","group":"KR-kritisch","country":"KR","lang":"en","type":"kritisch","owner":"Mitarbeiter-Eigentum (unabhängig, liberal-progressiv)","badge":"PROGRESSIV","rss":"https://www.khan.co.kr/en","paywall":false}
 ]
 </script>
 </body>

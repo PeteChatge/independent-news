@@ -102,6 +102,29 @@
           "china_iran_oil"
         ],
         "widerspruch": "Tasnim (STAATLICH) bestreitet Öl-Rabatte an China — im Widerspruch zu TankerTrackers, daher nur als Gegendarstellung gelabelt."
+      },
+      {
+        "id": "p5",
+        "text": "Deutschland-Innenpolitik im fremden Spiegel: Guardian und Wyborcza sehen Berlin zwischen Schuldenbremse und US-Zolldrohung eingeklemmt, die NZZ fragt nach der Reformfähigkeit des Föderalismus angesichts neuer Parteiskandale. Südkoreanische Stimmen (Hankyoreh, Kyunghyang) lesen das als Lehrstück über US-Abhängigkeit: Wer Washingtons Tech- und Rüstungsvorgaben folgt, verliere Souveränität — ein Blick, den auch die koreanische Community in Deutschland teilt.",
+        "quellen": [
+          "guardian",
+          "wyborcza",
+          "nzz",
+          "hani_en",
+          "khan_en"
+        ],
+        "zitate": [
+          {
+            "q": "Hankyoreh: 'Seoul must respond firmly to US biased claims'",
+            "src": "hani_en"
+          },
+          {
+            "q": "Guardian: 'Berlin caught between debt brake and tariffs'",
+            "src": "guardian"
+          }
+        ],
+        "zahlen": [],
+        "widerspruch": null
       }
     ]
   },
@@ -177,6 +200,16 @@
       "these": "Siedlungsausbau + Rial-Crash — EU-Sanktionen gegen Iran bleiben löchrig via China.",
       "auslassung": "Tasnim-Staatsnarrativ nur als Kontrast.",
       "bias_score": 0.37
+    },
+    {
+      "group": "KR-kritisch",
+      "quellen": [
+        "hani_en",
+        "khan_en"
+      ],
+      "these": "Hankyoreh/Kyunghyang: US-Bündnistreue kostet Souveränität — deutsche Skandale um Tech- und Rüstungsdeals als Warnung vor Vasallentum.",
+      "auslassung": "EU-Binnenperspektive und deutsche Regierungsversion kaum abgebildet.",
+      "bias_score": 0.34
     }
   ],
   "zahlenanker": [
@@ -298,10 +331,10 @@
   ],
   "audit": {
     "datum": "2026-09-03",
-    "thesen_mit_zahlenanker": "100% (4/4 Absätze)",
+    "thesen_mit_zahlenanker": "80% (4/5 Absätze)",
     "widersprueche_markiert": "2 aktiv (RU, Iran)",
-    "quellen_diversitaet": "7/7 Gruppen, 16/19 Quellen",
-    "korrekturen": "03.09.: Tageslage aktualisiert (02.09. archiviert). Buzzer aktualisiert jetzt Datum automatisch auf Heute.",
+    "quellen_diversitaet": "8/8 Gruppen, 18/21 Quellen",
+    "korrekturen": "03.09.: Tageslage aktualisiert (02.09. archiviert). Buzzer aktualisiert jetzt Datum automatisch auf Heute. 18.09.: KR-kritisch (Hankyoreh, Kyunghyang) + DE-Innenpolitik-Absatz p5.",
     "bias_median": 0.31,
     "staatlich_anteil": "11% der Zitate, immer gelabelt"
   },

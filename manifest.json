@@ -1,7 +1,7 @@
 {
   "name": "KI-Zeitung — Unbestechliche Tageslage",
   "short_name": "KI-Zeitung",
-  "description": "EU · USA · China — 7 Perspektiven, Zahlen-Anker, Eigentümer-Transparenz",
+  "description": "EU · USA · China — 8 Perspektiven, Zahlen-Anker, Eigentümer-Transparenz",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0b0f1a",

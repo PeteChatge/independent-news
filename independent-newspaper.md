@@ -15,7 +15,7 @@
 
 ## 2) Grilling — Runde 1 (6 Fragen, Empfehlungen)
 
-**Q1 Unbestechlich messbar:** A) Perspektiven-Wand + Bias-Score / B) Konsens-Artikel / C) Nur Fakten → **Empfehlung A+B Kombi** — Synthese oben, 7 Perspektiven kachelbar + Score  
+**Q1 Unbestechlich messbar:** A) Perspektiven-Wand + Bias-Score / B) Konsens-Artikel / C) Nur Fakten → **Empfehlung A+B Kombi** — Synthese oben, 8 Perspektiven kachelbar + Score  
 **Q2 Zielgruppe/Sprache:** A) DE only / B) DE/EN / C) EN only → **Empfehlung B) DE/EN** (DE MVP, EN Originaltreue), Tageslage 06:00 + Eilmeldungen  
 **Q3 Architektur:** A) Pure Client / B) Frontend+Backend / C) Hybrid PWA → **Empfehlung C) Hybrid PWA** (CORS, Rate-Limits)  
 **Q4 Quellenkorb MVP:** 1) Nicht-EU (UK/US), 2) CH neutral, 3) Osteuropa Grenze (PL/Baltikum/RO/FI), 4) RU kritisch, 5) UA kritisch → Vorschlag fix: CH=NZZ/Watson, UK=Guardian/FT, US=NYT/WSJ, PL=Wyborcza, Baltikum=Delfi, RO=HotNews, FI=Helsingin, RU=Meduza/Novaya/Kommersant, UA=Pravda/Kyiv Independent + Staatsmedium als Kontrast  
@@ -108,7 +108,7 @@
 
 **Implementiert:**
 - Topbar: `HTML` `PNG` `PDF Dark` `WA Status` (`index.html:114`)
-- Suchleiste unter Hero (`index.html:126`): Input + Presets Ukraine-Front / Kriegstüchtigkeit, `searchTopic()` (`app.js:264`) sucht in Synthese/Perspektiven/Zahlen, highlight, `searchTopicWithLLM()` Cloud-Recherche (7 Perspektiven Prompt)
+- Suchleiste unter Hero (`index.html:126`): Input + Presets Ukraine-Front / Kriegstüchtigkeit, `searchTopic()` (`app.js:264`) sucht in Synthese/Perspektiven/Zahlen, highlight, `searchTopicWithLLM()` Cloud-Recherche (8 Perspektiven Prompt inkl. KR-kritisch)
 - Export: `exportHTML()` Blob, `exportPNG()` html2canvas 2x, `exportPDFCanvas()` html2canvas+jspdf A4 dunkel (`app.js:332`), ersetzte `window.print` (schnitt + weiß). Hinweis `print-color-adjust:exact` aber Canvas nun primär.
 
 ---

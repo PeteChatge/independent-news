@@ -17,5 +17,7 @@
   {"id":"haaretz","name":"Haaretz","group":"IL-kritisch","country":"IL","lang":"en","type":"kritisch","owner":"Schocken Family + DuMont","badge":"KRITISCH","rss":"https://www.haaretz.com/cmlink/haaretz-news-rss-1.559184","paywall":true},
   {"id":"timesil","name":"Times of Israel","group":"IL-neutral","country":"IL","lang":"en","type":"neutral","owner":"Privat (Mirrer)","badge":"NEUTRAL","rss":"https://www.timesofisrael.com/feed/","paywall":false},
   {"id":"iran_intl","name":"Iran International (Exil)","group":"IR-kritisch","country":"IR-exil","lang":"fa","type":"kritisch","owner":"Exil London (Volant Media)","badge":"EXIL-KRITISCH","rss":"https://www.iranintl.com/en/rss","paywall":false},
-  {"id":"tasnim","name":"Tasnim News","group":"IR-staatlich","country":"IR","lang":"fa","type":"staatlich","owner":"IRGC-nah (staatlich)","badge":"STAATLICH","rss":"https://www.tasnimnews.com/en/rss/feed/story/allStories","paywall":false}
+  {"id":"tasnim","name":"Tasnim News","group":"IR-staatlich","country":"IR","lang":"fa","type":"staatlich","owner":"IRGC-nah (staatlich)","badge":"STAATLICH","rss":"https://www.tasnimnews.com/en/rss/feed/story/allStories","paywall":false},
+  {"id":"hani_en","name":"Hankyoreh (EN)","group":"KR-kritisch","country":"KR","lang":"en","type":"kritisch","owner":"Hankyoreh Media (~62.000 Aktionäre, unabhängig, progressiv)","badge":"PROGRESSIV","rss":"https://english.hani.co.kr/rss/","paywall":false},
+  {"id":"khan_en","name":"Kyunghyang Shinmun (EN)","group":"KR-kritisch","country":"KR","lang":"en","type":"kritisch","owner":"Mitarbeiter-Eigentum (unabhängig, liberal-progressiv)","badge":"PROGRESSIV","rss":"https://www.khan.co.kr/en","paywall":false}
 ]

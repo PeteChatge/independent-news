@@ -13,6 +13,7 @@ const ALLOWED = [
   'www.pravda.com.ua','kyivindependent.com',
   'www.haaretz.com','www.timesofisrael.com',
   'www.iranintl.com','www.tasnimnews.com',
+  'english.hani.co.kr','www.hani.co.kr','www.khan.co.kr',
   'ec.europa.eu','www.ecb.europa.eu','www.bruegel.org','acleddata.com','data.unhcr.org'
 ];
 const CACHE = new Map();

@@ -274,7 +274,7 @@ function renderAudit(){
     +'</div><div style="margin-top:8px;font-size:11px;color:#9aa8c3">Staatlich-Anteil: '+a.staatlich_anteil+' · Korrekturen: '+a.korrekturen+'</div>'
     +'<div style="margin-top:8px"><a href="data/mock.json" target="_blank" style="font-size:11px">Audit-Rohdaten →</a></div>';
   // KPI oben
-  $('#kpi').innerHTML='<div><b>'+a.thesen_mit_zahlenanker+'</b><span>Thesen mit Zahlenanker</span></div><div><b>7/7</b><span>Perspektiven</span></div><div><b>'+a.widersprueche_markiert+'</b><span>Widersprüche</span></div><div><b>0</b><span>Tracking</span></div>';
+  $('#kpi').innerHTML='<div><b>'+a.thesen_mit_zahlenanker+'</b><span>Thesen mit Zahlenanker</span></div><div><b>8/8</b><span>Perspektiven</span></div><div><b>'+a.widersprueche_markiert+'</b><span>Widersprüche</span></div><div><b>0</b><span>Tracking</span></div>';
 }
 
 function bindTabs(){
@@ -481,7 +481,7 @@ async function runCloudSynthese(){
   const out=$('#cloud-synthese-status');
   if(!key){ out.textContent='Bitte erst Key speichern.'; out.style.color='#ff6b6b'; return; }
   out.textContent='Synthetisiere via '+prov+' (auto Fallback-Modelle)…'; out.style.color='#9aa8c3';
-  const prompt='Fasse Tageslage EU-USA-China 01.09.2026 in 1 Absatz (DE, 3 Sätze) aus 7 Perspektiven, markiere Widerspruch, nenne 2 Zahlenanker.';
+  const prompt='Fasse Tageslage EU-USA-China 01.09.2026 in 1 Absatz (DE, 3 Sätze) aus 8 Perspektiven, markiere Widerspruch, nenne 2 Zahlenanker.';
   try{
     let res=null;
     if(prov==='groq') res=await groqChatWithFallback(key, prompt, 0.4, 400);
@@ -503,7 +503,7 @@ function searchTopic(){
   const status=$('#search-status');
   const resEl=$('#search-results');
   if(!q){ status.textContent='Bitte Thema eingeben.'; status.style.color='#f0b429'; return; }
-  status.textContent='Suche "'+q+'" in 7 Perspektiven + Zahlen…'; status.style.color='#9aa8c3';
+  status.textContent='Suche "'+q+'" in 8 Perspektiven + Zahlen…'; status.style.color='#9aa8c3';
   const qq=q.toLowerCase();
   // Suche in mock-Daten
   const synthHits=DATA.tageslage.synthese.filter(p=> p.text.toLowerCase().includes(qq) || (p.widerspruch||'').toLowerCase().includes(qq));
@@ -539,7 +539,7 @@ async function searchTopicWithLLM(){
   const resEl=$('#search-results');
   if(!key){ resEl.innerHTML+='<div class=notice style="border-color:#ff6b6b">✗ Für Tiefen-Recherche API-Key unten im hellgelben Feld speichern (openrouter.ai/keys → sk-or-...). Mock-Suche bleibt ohne Key.</div>'; return; }
   resEl.innerHTML+='<div id="llm-searching"><div class="barrier-tape"><span>● SUCHE LÄUFT — "'+q.replace(/</g,'&lt;').toUpperCase()+'" — 7 PERSPEKTIVEN + ZAHLEN WERDEN GEPRÜFT ● SUCHE LÄUFT — '+prov.toUpperCase()+' ●</span></div><div class="notice" style="margin-top:6px">☁️ Frage '+prov+' (auto Fallback) zu "'+q.replace(/</g,'&lt;')+'" — bitte warten…</div></div>';
-  const prompt='Du bist KI-Zeitung. Thema: "'+q+'". Erzeuge 4-Satz Lagebericht DE auf Basis 7 Perspektiven (CH neutral, UK/US, Osteuropa, RU-Exil, RU-staatlich STAATLICH gelabelt, UA kritisch, IL/IR gefiltert). Nenne 2 Zahlenanker (Eurostat/ECB/ACLED), markiere 1 Widerspruch, nenne Eigentümer-Bias wo relevant.';
+  const prompt='Du bist KI-Zeitung. Thema: "'+q+'". Erzeuge 4-Satz Lagebericht DE auf Basis 8 Perspektiven (CH neutral, UK/US, Osteuropa, RU-Exil, RU-staatlich STAATLICH gelabelt, UA kritisch, IL/IR gefiltert, KR-kritisch amerika-kritisch). Nenne 2 Zahlenanker (Eurostat/ECB/ACLED), markiere 1 Widerspruch, nenne Eigentümer-Bias wo relevant.';
   try{
     let res=null;
     if(prov==='groq') res=await groqChatWithFallback(key, prompt, 0.45, 520);
@@ -672,7 +672,7 @@ async function exportScrollingVideo(){
 function exportPDFDark(){ exportPDFCanvas(); } // alt: window.print schneidet + bleibt weiß trotz Haken — nun Canvas
 function exportSearchPDF(){ exportPDFCanvas(); }
 function shareWhatsApp(){
-  const text=encodeURIComponent('KI-Zeitung — Unbestechliche Tageslage '+DATA.tageslage.date+'\nEU·USA·China + CH·Osteuropa·RU/UA·IL/IR — 7 Perspektiven, Zahlen-Anker\n'+location.href+'\n\nHinweis: WhatsApp kann KEIN HTML rendern — HTML wird als Datei zum Download angezeigt. Für STATUS nimm PNG (Bild) — Status akzeptiert nur Bild/Video. HTML/PDF als Dokument chatten geht, aber nicht als Status.');
+  const text=encodeURIComponent('KI-Zeitung — Unbestechliche Tageslage '+DATA.tageslage.date+'\nEU·USA·China + CH·Osteuropa·RU/UA·IL/IR·KR — 8 Perspektiven, Zahlen-Anker\n'+location.href+'\n\nHinweis: WhatsApp kann KEIN HTML rendern — HTML wird als Datei zum Download angezeigt. Für STATUS nimm PNG (Bild) — Status akzeptiert nur Bild/Video. HTML/PDF als Dokument chatten geht, aber nicht als Status.');
   window.open('https://wa.me/?text='+text,'_blank');
   setTimeout(()=>alert('WhatsApp + HTML:\n• Chat: HTML/PDF als DOKUMENT senden → Empfänger lädt runter & öffnet im Browser (Dark bleibt).\n• Status: geht NICHT mit HTML/PDF — nur Bild/Video. → PNG Button nutzen, dann in Status als Bild posten.\n• Alternativ: HTML auf https://app.netlify.com/drop ziehen → Link in WhatsApp teilen → Vorschau + Dark im Browser.'),700);
 }
