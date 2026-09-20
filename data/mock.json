@@ -4,11 +4,11 @@
     "schluss": "05:00 MEZ",
     "next": "2026-09-04 06:00 MEZ",
     "breaking": null,
-    "titel": "Tageslage 03.09.2026 — EU-Haushalt 2027: Verteidigung paktiert — Ukraine-Front weiter umkämpft",
+    "titel": "Tageslage 03.09.2026 \u2014 EU-Haushalt 2027: Verteidigung paktiert \u2014 Ukraine-Front weiter umk\u00e4mpft",
     "synthese": [
       {
         "id": "p1",
-        "text": "Im EU-Parlament eskaliert die Debatte um „Kriegstüchtigkeit“: Die Kommission fordert +€70 Mrd. Verteidigungsaufwuchs bis 2030, während Haushaltskommissar vor Schuldenbremse warnt. Partner Schweiz (NZZ) fragt nach Eigenständigkeit, osteuropäische Stimmen (Wyborcza, Delfi) drängen auf sofortige Munition statt Grundsatzpapiere.",
+        "text": "Im EU-Parlament eskaliert die Debatte um \u201eKriegst\u00fcchtigkeit\u201c: Die Kommission fordert +\u20ac70 Mrd. Verteidigungsaufwuchs bis 2030, w\u00e4hrend Haushaltskommissar vor Schuldenbremse warnt. Die Frage ist nicht nur, wie viel, sondern auch wer zahlt \u2014 denn die nationalen Haushalte sind bereits durch Corona und Energiekrise belastet. Partner Schweiz (NZZ) fragt nach Eigenst\u00e4ndigkeit, osteurop\u00e4ische Stimmen (Wyborcza, Delfi) dr\u00e4ngen auf sofortige Munition statt Grundsatzpapiere. Der Grundkonflikt bleibt: Westeuropa favorisiert langfristige R\u00fcstungsprojekte und gemeinsame Beschaffung, w\u00e4hrend die an Russland grenzenden Staaten heute und nicht \u00fcbermorgen handeln wollen. Die Slowakei und Ungarn blockieren weitere Sonderverm\u00f6gen, Finnland und Estland fordern eine Verdopplung der NATO-Zielvorgabe auf 4% BIP. Ohne Kompromiss droht ein Stillstand, der genau jene L\u00fccke offen l\u00e4sst, die Moskau instrumentalisieren k\u00f6nnte.",
         "quellen": [
           "nzz",
           "srf",
@@ -18,11 +18,11 @@
         ],
         "zitate": [
           {
-            "q": "NZZ: 'Kriegstüchtig — aber womit bezahlen?'",
+            "q": "NZZ: 'Kriegst\u00fcchtig \u2014 aber womit bezahlen?'",
             "src": "nzz"
           },
           {
-            "q": "Wyborcza: 'Paper armies don’t stop drones'",
+            "q": "Wyborcza: 'Paper armies don't stop drones'",
             "src": "wyborcza"
           }
         ],
@@ -34,7 +34,7 @@
       },
       {
         "id": "p2",
-        "text": "Zahlenanker 03.09.: EU-Verteidigung 1,8% BIP (2024, +0,3pp YoY, Eurostat/EDA), EZB-Leitzins 3,25% (ECB 05.06.2025), TTF-Gas €36/MWh (+€2 seit 29.08., Bruegel). EU-Handel China -€312 Mrd. / USA +€157 Mrd. (2024). US-Zölle (10% auf EU-Maschinen) noch nicht in Kraft — FT/NYT sehen EU als Puffer.",
+        "text": "Zahlenanker 03.09.: EU-Verteidigung liegt bei 1,8% BIP (2024, +0,3pp gegen\u00fcber Vorjahr, Eurostat/EDA), der EZB-Leitzins bei 3,25% (ECB 05.06.2025), TTF-Gas bei \u20ac36/MWh (+\u20ac2 seit 29.08., Bruegel). Die EU-Handelsbilanz zeigt \u2013\u20ac312 Mrd. mit China und +\u20ac157 Mrd. mit den USA (2024). US-Z\u00f6lle (10% auf EU-Maschinen) sind noch nicht in Kraft \u2014 FT und NYT sehen die EU als Pufferzone, die erst nach der US-Wahl 2026 handeln wird. Die Inflation in der Eurozone sinkt auf 2,4% (Juni 2,6%), was der EZB Spielraum f\u00fcr eine weitere Zinssenkung gibt \u2014 aber der Gaspreisanstieg um 2\u20ac/MWh in nur f\u00fcnf Tagen zeigt, wie fragil die Energieversorgung noch immer ist. F\u00fcr die Verteidigungsplanung bedeutet das: Die Mittel m\u00fcssen aus laufenden Haushalten kommen, denn neue Schulden sind politisch und \u00f6konomisch begrenzt.",
         "quellen": [
           "eurostat",
           "ecb",
@@ -53,7 +53,7 @@
       },
       {
         "id": "p3",
-        "text": "Ukraine-Front 01./03.09.: ACLED ~62 Ereignisse/Tag Anfang September (stabil vs. August-Schnitt 59), UNHCR unverändert 6,3 Mio. Externe Geflüchtete. Kyiv Independent: Pokrowsk-Achse weiter unter Druck, Ukrainska Pravda: Teilmobilisierung stockt. Meduza/Novaya (Exil) berichten über Sommerlohn-Rückstände in RU-Regionen, Kommersant (STAATLICH-NAH) meldet „Kontrolle bei Donezk“ — Widerspruch zu ACLED-Lage.",
+        "text": "Ukraine-Front 01./03.09.: ACLED verzeichnet rund 62 Ereignisse pro Tag Anfang September (stabil im Vergleich zum August-Schnitt von 59), der UNHCR z\u00e4hlt unver\u00e4ndert 6,3 Millionen externe Gefl\u00fcchtete. Kyiv Independent berichtet, dass die Pokrowsk-Achse weiter unter massivem Druck steht, w\u00e4hrend Ukrainska Pravda meldet, dass die Teilmobilisierung stockt \u2014 die Rekrutierung l\u00e4uft hinter den Erwartungen zur\u00fcck. Meduza und Novaya (beide Exil) berichten \u00fcber Sommerlohn-R\u00fcckst\u00e4nde in russischen Regionen, was auf wachsende soziale Kosten des Krieges hindeutet. Kommersant (STAATLICH-NAH) meldet \u201eKontrolle bei Donezk\u201c, was im Widerspruch zu den ACLED-Zahlen steht \u2014 die Gel\u00e4ndegewinne werden als deutlich gr\u00f6\u00dfer dargestellt, als unabh\u00e4ngige Datendienste best\u00e4tigen. Das ukrainische Milit\u00e4r meldet unterdessen, dass die Front bei Pokrowsk stabilisiert werden konnte, aber die Versorgungslage an der Ostfront bleibt angespannt.",
         "quellen": [
           "kyivind",
           "pravda_ua",
@@ -76,11 +76,11 @@
           "acled_ua_sep02",
           "unhcr_refugees"
         ],
-        "widerspruch": "RU-staatlich vs. ACLED/UA-kritisch: Geländegewinne als groß vs. marginal eingestuft — Konsens stützt sich nur auf ACLED-Zahlen, nicht auf Staatsnarrativ."
+        "widerspruch": "RU-staatlich vs. ACLED/UA-kritisch: Gel\u00e4ndegewinne als gro\u00df vs. marginal eingestuft \u2014 Konsens st\u00fctzt sich nur auf ACLED-Zahlen, nicht auf Staatsnarrativ."
       },
       {
         "id": "p4",
-        "text": "EU-USA-China Dreieck: Brüssel verhandelt weiter Anti-Dumping vs. China E-Autos, Washington hält Zolldrohung aufrecht. Haaretz: Israels Regierung treibt Siedlungsausbau (EU mahnt), Iran Intl: Rial auf Rekordtief, Inflation 42% — China kauft weiter ~1,2 mb/d Iran-Öl (TankerTrackers), was EU-Sanktionen unterläuft.",
+        "text": "EU-USA-China Dreieck: Br\u00fcssel verhandelt weiter Anti-Dumping-Ma\u00dfnahmen gegen chinesische E-Autos, Washington h\u00e4lt die Zolldrohung auf 10% f\u00fcr EU-Maschinen aufrecht. Haaretz meldet, dass Israels Regierung den Siedlungsausbau im Westjordanland massiv vorantreibt \u2014 die EU warnt vor Konsequenzen f\u00fcr die bilateralen Beziehungen. Iran Intl berichtet, dass der Rial einen neuen Rekordtiefstand erreicht hat und die Inflation bei rund 42% liegt, w\u00e4hrend China weiterhin rund 1,2 Millionen Barrel pro Tag iranisches \u00d6l importiert (TankerTrackers) und damit EU-Sanktionen systematisch unterl\u00e4uft. Der Dreieckskonflikt zeigt sich im Kern: Washington sch\u00fctzt eigene Industrien durch Z\u00f6lle, Peking umgeht Sanktionen durch bilaterale Abkommen, und Br\u00fcssel versucht, zwischen beiden Parteien einen Interessensausgleich zu finden \u2014 ohne dabei die eigene Wirtschaft zu opfern. Die perspektivische Frage bleibt, ob die EU ihre strategische Autonomie behaupten kann oder zwischen den Bl\u00f6cken zerrieben wird.",
         "quellen": [
           "haaretz",
           "iran_intl",
@@ -101,11 +101,11 @@
           "iran_inflation",
           "china_iran_oil"
         ],
-        "widerspruch": "Tasnim (STAATLICH) bestreitet Öl-Rabatte an China — im Widerspruch zu TankerTrackers, daher nur als Gegendarstellung gelabelt."
+        "widerspruch": "Tasnim (STAATLICH) bestreitet \u00d6l-Rabatte an China \u2014 im Widerspruch zu TankerTrackers, daher nur als Gegendarstellung gelabelt."
       },
       {
         "id": "p5",
-        "text": "Deutschland-Innenpolitik im fremden Spiegel: Guardian und Wyborcza sehen Berlin zwischen Schuldenbremse und US-Zolldrohung eingeklemmt, die NZZ fragt nach der Reformfähigkeit des Föderalismus angesichts neuer Parteiskandale. Südkoreanische Stimmen (Hankyoreh, Kyunghyang) lesen das als Lehrstück über US-Abhängigkeit: Wer Washingtons Tech- und Rüstungsvorgaben folgt, verliere Souveränität — ein Blick, den auch die koreanische Community in Deutschland teilt.",
+        "text": "Deutschland-Innenpolitik im fremden Spiegel: Guardian und Wyborcza sehen Berlin zwischen Schuldenbremse und US-Zolldrohung eingeklemmt, die NZZ fragt nach der Reformf\u00e4higkeit des F\u00f6deralismus angesichts neuer Parteiskandale. Die Schuldenbremse bleibt der zentrale Stolperstein: Ohne Ausnahmen f\u00fcr Verteidigung und Infrastruktur l\u00e4sst sich der Investitionsstau nicht l\u00f6sen, aber eine Grundgesetz\u00e4nderung erfordert eine Zweidrittelmehrheit, die die derzeitige Koalition nicht hat. Die US-Zolldrohung auf EU-Maschinen betrifft gerade die deutschen Automobil- und Maschinenbauer am st\u00e4rksten. S\u00fcdkoreanische Stimmen (Hankyoreh, Kyunghyang) lesen das als Lehrst\u00fcck \u00fcber US-Abh\u00e4ngigkeit: Wer Washingtons Tech- und R\u00fcstungsvorgaben folgt, verliere Souver\u00e4nitet \u2014 ein Blick, den auch die koreanische Community in Deutschland teilt. Die Diskussion \u00fcber deutsche Souver\u00e4nitet in Zeiten transatlantischer Spannungen gewinnt damit internationale Dimension, die \u00fcber rein nationale Parteipolitik hinausgeht.",
         "quellen": [
           "guardian",
           "wyborcza",
@@ -135,8 +135,8 @@
         "nzz",
         "srf"
       ],
-      "these": "Heute: Wer bezahlt Kriegstüchtigkeit? NZZ rechnet Haushalt gegen Sicherheit, SRF betont Volksentscheid-Hürde.",
-      "auslassung": "Osteuropäische Dringlichkeit fehlt.",
+      "these": "Heute: Wer bezahlt Kriegst\u00fcchtigkeit? NZZ rechnet Haushalt gegen Sicherheit, SRF betont Volksentscheid-H\u00fcrde.",
+      "auslassung": "Osteurop\u00e4ische Dringlichkeit fehlt.",
       "bias_score": 0.21
     },
     {
@@ -146,8 +146,8 @@
         "ft",
         "nyt"
       ],
-      "these": "FT/NYT: EU zwischen US-Zollkeule und China-Dumping — Warnung vor Investitionsbremse.",
-      "auslassung": "EU-Innenpolitik (Bundestag, Assemblée) wenig beleuchtet.",
+      "these": "FT/NYT: EU zwischen US-Zollkeule und China-Dumping \u2014 Warnung vor Investitionsbremse.",
+      "auslassung": "EU-Innenpolitik (Bundestag, Assembl\u00e9e) wenig beleuchtet.",
       "bias_score": 0.29
     },
     {
@@ -157,8 +157,8 @@
         "delfi",
         "helsinki"
       ],
-      "these": "02.09. Fokus: Munition heute, nicht 2030 — Front bei Pokrowsk als Gradmesser.",
-      "auslassung": "Kosten für EU-Haushalt kaum erwähnt.",
+      "these": "02.09. Fokus: Munition heute, nicht 2030 \u2014 Front bei Pokrowsk als Gradmesser.",
+      "auslassung": "Kosten f\u00fcr EU-Haushalt kaum erw\u00e4hnt.",
       "bias_score": 0.27
     },
     {
@@ -167,7 +167,7 @@
         "meduza",
         "novaya"
       ],
-      "these": "Lohnrückstände + verdeckte Mobilisierung — soziale Kosten des Krieges wachsen.",
+      "these": "Lohnr\u00fcckst\u00e4nde + verdeckte Mobilisierung \u2014 soziale Kosten des Krieges wachsen.",
       "auslassung": "UA-Frontverluste nicht im Zentrum.",
       "bias_score": 0.25
     },
@@ -187,7 +187,7 @@
         "pravda_ua",
         "kyivind"
       ],
-      "these": "02.09.: Pokrowsk hält, aber Rotation fehlt — Kritik an langsamer EU-Lieferung.",
+      "these": "02.09.: Pokrowsk h\u00e4lt, aber Rotation fehlt \u2014 Kritik an langsamer EU-Lieferung.",
       "auslassung": "Mobilisierungsprobleme nur am Rande.",
       "bias_score": 0.33
     },
@@ -197,7 +197,7 @@
         "haaretz",
         "iran_intl"
       ],
-      "these": "Siedlungsausbau + Rial-Crash — EU-Sanktionen gegen Iran bleiben löchrig via China.",
+      "these": "Siedlungsausbau + Rial-Crash \u2014 EU-Sanktionen gegen Iran bleiben l\u00f6chrig via China.",
       "auslassung": "Tasnim-Staatsnarrativ nur als Kontrast.",
       "bias_score": 0.37
     },
@@ -207,7 +207,7 @@
         "hani_en",
         "khan_en"
       ],
-      "these": "Hankyoreh/Kyunghyang: US-Bündnistreue kostet Souveränität — deutsche Skandale um Tech- und Rüstungsdeals als Warnung vor Vasallentum.",
+      "these": "Hankyoreh/Kyunghyang: US-B\u00fcndnistreue kostet Souver\u00e4nit\u00e4t \u2014 deutsche Skandale um Tech- und R\u00fcstungsdeals als Warnung vor Vasallentum.",
       "auslassung": "EU-Binnenperspektive und deutsche Regierungsversion kaum abgebildet.",
       "bias_score": 0.34
     }
@@ -233,7 +233,7 @@
     },
     {
       "id": "ecb_rate",
-      "label": "EZB Einlagefazilität",
+      "label": "EZB Einlagefazilit\u00e4t",
       "wert": "3,25%",
       "quelle": "ECB 2025-06-05",
       "datum": "2025-06-05",
@@ -243,7 +243,7 @@
     {
       "id": "eurostat_trade_2025",
       "label": "EU Handelsbilanz 2024",
-      "wert": "China -€312 Mrd / USA +€157 Mrd",
+      "wert": "China -\u20ac312 Mrd / USA +\u20ac157 Mrd",
       "quelle": "Eurostat COMEXT",
       "datum": "2025-03-14",
       "url": "https://ec.europa.eu/eurostat",
@@ -252,7 +252,7 @@
     {
       "id": "bruegel_gas",
       "label": "TTF Gas (Frontmonat)",
-      "wert": "€36/MWh (Peak €340 Aug 2022)",
+      "wert": "\u20ac36/MWh (Peak \u20ac340 Aug 2022)",
       "quelle": "Bruegel + ENTSOG",
       "datum": "2026-09-01",
       "url": "https://www.bruegel.org/dataset/european-natural-gas-imports",
@@ -261,7 +261,7 @@
     {
       "id": "acled_ua_sep02",
       "label": "ACLED UA 01.-02.09.2026",
-      "wert": "~62 Ereignisse/Tag (Aug Ø 59)",
+      "wert": "~62 Ereignisse/Tag (Aug \u00d8 59)",
       "quelle": "ACLED",
       "datum": "2026-09-02",
       "url": "https://acleddata.com",
@@ -278,7 +278,7 @@
     },
     {
       "id": "unhcr_refugees",
-      "label": "UNHCR Geflüchtete außerhalb UA",
+      "label": "UNHCR Gefl\u00fcchtete au\u00dferhalb UA",
       "wert": "6,3 Mio.",
       "quelle": "UNHCR Operational Data",
       "datum": "2026-08-15",
@@ -297,7 +297,7 @@
     },
     {
       "id": "china_iran_oil",
-      "label": "China Öl-Import Iran",
+      "label": "China \u00d6l-Import Iran",
       "wert": "~1,2 mb/d",
       "quelle": "TankerTrackers",
       "datum": "2026-08-28",
@@ -308,7 +308,7 @@
   "forenlage": [
     {
       "ort": "r/de (Reddit)",
-      "thema": "Kriegstüchtigkeit — wer zahlt?",
+      "thema": "Kriegst\u00fcchtigkeit \u2014 wer zahlt?",
       "stimmung": "Haushalt vs. Sicherheit, Wehrpflicht-Debatte",
       "bot_verdacht": 0.16,
       "posts": 387
@@ -323,7 +323,7 @@
     {
       "ort": "Telegram RU (aggregiert)",
       "thema": "Front Donezk",
-      "stimmung": "Staatsnah: Erfolg · Exil: Stagnation",
+      "stimmung": "Staatsnah: Erfolg \u00b7 Exil: Stagnation",
       "bot_verdacht": 0.69,
       "posts": 1180,
       "label": "UNVERIFIZIERT"
@@ -331,12 +331,12 @@
   ],
   "audit": {
     "datum": "2026-09-03",
-    "thesen_mit_zahlenanker": "80% (4/5 Absätze)",
+    "thesen_mit_zahlenanker": "80% (4/5 Abs\u00e4tze)",
     "widersprueche_markiert": "2 aktiv (RU, Iran)",
     "quellen_diversitaet": "8/8 Gruppen, 18/21 Quellen",
     "korrekturen": "03.09.: Tageslage aktualisiert (02.09. archiviert). Buzzer aktualisiert jetzt Datum automatisch auf Heute. 18.09.: KR-kritisch (Hankyoreh, Kyunghyang) + DE-Innenpolitik-Absatz p5.",
     "bias_median": 0.31,
     "staatlich_anteil": "11% der Zitate, immer gelabelt"
   },
-  "diskurs_tracker_v2": "Platzhalter V2: Wortwahl \"Kriegstüchtig vs. verteidigungsfähig\" · \"Invasion vs. Spezialoperation\" — Tracking startet 02.09."
+  "diskurs_tracker_v2": "Platzhalter V2: Wortwahl \"Kriegst\u00fcchtig vs. verteidigungsf\u00e4hig\" \u00b7 \"Invasion vs. Spezialoperation\" \u2014 Tracking startet 02.09."
 }
