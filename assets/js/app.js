@@ -48,24 +48,28 @@ async function load(){
   if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js').catch(()=>{}); }
 }
 function telegraph(t){
-  // heruntergebrochen: kurz, UPPER, ohne Satzzeichen, 3 Leer + 3 Plus wird im Renderer angehängt
-  return t.toUpperCase().replace(/[—–.,;!?:"'()]/g,'').replace(/\s+/g,' ').trim().slice(0,88);
+  // Ganze Sätze / sinnhafte Phrasen, UPPER, Satzzeichen entfernen, 160 Zeichen
+  return t.toUpperCase().replace(/[—–.,;!?:"'()]/g,'').replace(/\s+/g,' ').trim().slice(0,160);
 }
 function renderTicker(){
   const track=document.getElementById('ticker-track'); if(!track||!DATA) return;
-  // Schlagzeilen aus Tageslage + Perspektiven + Zahlen
+  // Ganze Sätze und sinnhafte Phrasen aus Tageslage + Perspektiven + Zahlen
   const heads=[
     DATA.tageslage.titel.replace(/^Tageslage \d+\.\d+\.\d+ — /,''),
-    ...DATA.tageslage.synthese.map(p=> p.text.split('.')[0] ),
-    ...DATA.perspektiven.map(p=> p.group+': '+p.these.split('.')[0]),
+    ...DATA.tageslage.synthese.map(p=> {
+      // Erster ganzer Satz (bis zum ersten Punkt), mindestens 40 Zeichen
+      const s=p.text.match(/[^.!?]+[.!?]/);
+      return s ? s[0].trim() : p.text.slice(0,120);
+    }),
+    ...DATA.perspektiven.map(p=> p.group+': '+p.these),
     ...DATA.zahlenanker.slice(0,3).map(z=> z.label+' '+z.wert)
-  ].slice(0,8);
+  ].slice(0,10);
   const items=heads.map(h=> '<span class="ticker-item">'+telegraph(h)+'   <span class="plus">+++</span></span>');
   // Ohne Leerfahrt: Inhalt verdoppeln, damit -50% nahtlos loop
   const once=items.join('<span style="color:var(--accent)"> • </span>');
   track.innerHTML=once+'<span style="color:var(--accent)"> • </span>'+once;
-  // Dynamische Dauer nach Länge (keine Leerfahrt, gleichmäßig)
-  const len=track.scrollWidth||2000; const dur=Math.max(60, len/22); track.style.animationDuration=dur+'s';
+  // Dynamische Dauer nach Länge — doppelt so schnell wie vorher
+  const len=track.scrollWidth||2000; const dur=Math.max(30, len/44); track.style.animationDuration=dur+'s';
 }
 async function aktualisiere(){
   const buz=document.getElementById('buzzer'); if(buz) buz.classList.add('busy');
