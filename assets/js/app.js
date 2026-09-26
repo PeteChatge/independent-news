@@ -113,10 +113,8 @@ async function aktualisiere(){
         const synthPrompt='Du bist KI-Zeitung Synthese. Datum '+pStr+'. Erzeuge 4 kurze Absätze DE (je 2 Sätze) zu: 1) EU Haushalt Verteidigung Kriegstüchtigkeit, 2) Zahlenanker (EDA 1,8% BIP, EZB 3,25%, Gas), 3) Ukraine-Front 02./03.09. (ACLED, Pokrowsk), 4) EU-USA-China + Nahost. Markiere Widersprüche wo nötig. Trenne Absätze exakt mit " ||| ". Keine Einleitung, nur 4 Absätze.';
         let res=null;
         if(cloudProv==='groq') res=await groqChatWithFallback(cloudKey, synthPrompt, 0.45, 700);
-        else if(cloudProv==='huggingface'){
-          const r=await fetch('https://api-inference.huggingface.co/models/Qwen/Qwen2.5-7B-Instruct',{method:'POST', headers:{'Authorization':'Bearer '+cloudKey,'Content-Type':'application/json'}, body:JSON.stringify({inputs:synthPrompt, parameters:{max_new_tokens:600}})});
-          if(r.ok){ const j=await r.json(); const t=Array.isArray(j)?j[0]?.generated_text||'' : ''; res={text:t, model:'Qwen2.5-7B'}; } else throw new Error(await r.text());
-        } else res=await openRouterChatWithFallback(cloudKey, synthPrompt, 0.45);
+        else if(cloudProv==='huggingface') res=await hfChatWithRouter(cloudKey, synthPrompt, 0.45, 600);
+        else res=await openRouterChatWithFallback(cloudKey, synthPrompt, 0.45);
         if(res && res.text){
           const parts=res.text.split('|||').map(s=>s.trim()).filter(Boolean);
           if(parts.length>=4){
@@ -307,8 +305,15 @@ async function refreshLive(){
   setTimeout(()=>{btn.textContent='Zahlen live prüfen'; btn.disabled=false;},2200);
 }
 
-const GROQ_FALLBACK_MODELS=['openai/gpt-oss-20b','openai/gpt-oss-120b','qwen/qwen3.6-27b','llama-3.3-70b-versatile','llama-3.1-8b-instant'];
-const OPENROUTER_FALLBACK=['meta-llama/llama-3.1-8b-instruct:free','meta-llama/llama-3.3-70b-instruct:free','mistralai/mistral-7b-instruct:free','openai/gpt-oss-20b:free'];
+const GROQ_FALLBACK_MODELS=['openai/gpt-oss-20b','openai/gpt-oss-120b'];
+const OPENROUTER_FALLBACK=['openai/gpt-oss-20b:free','meta-llama/llama-3.1-8b-instruct:free','mistralai/mistral-7b-instruct:free','openrouter/free'];
+function appReferer(){ return (location.protocol && location.protocol.startsWith('http')) ? location.href : 'https://petechatge.github.io/independent-news/'; }
+async function hfChatWithRouter(key, prompt, temperature=0.4, max_tokens=520){
+  const r=await fetch('https://router.huggingface.co/v1/chat/completions',{method:'POST', headers:{'Content-Type':'application/json','Authorization':'Bearer '+key}, body:JSON.stringify({model:'Qwen/Qwen2.5-7B-Instruct', messages:[{role:'user',content:prompt}], temperature, max_tokens})});
+  if(!r.ok) throw new Error('HF-Router '+r.status+': '+(await r.text()).slice(0,200));
+  const j=await r.json(); const t=j.choices?.[0]?.message?.content; if(!t) throw new Error('leere Antwort (HF-Router)');
+  return {text:t, model:'Qwen2.5-7B via HF-Router'};
+}
 async function groqChatWithFallback(key, prompt, temperature=0.4, max_tokens=520){
   let lastErr='';
   // 1) Versuche statische Fallback-Liste (aktuell: gpt-oss-20b/120b/qwen)
@@ -335,7 +340,7 @@ async function groqChatWithFallback(key, prompt, temperature=0.4, max_tokens=520
       lastErr+=' | dynamisch probiert: '+ids.slice(0,3).join(', ');
     }
   }catch(e){}
-  throw new Error('Groq: kein Modell verfügbar. Letzter Fehler: '+lastErr+' — aktuell gültig: openai/gpt-oss-20b, openai/gpt-oss-120b, qwen/qwen3.6-27b (siehe https://console.groq.com/docs/deprecations — llama3-70b/8b, mixtral, gemma2 sind abgeschaltet)');
+  throw new Error('Groq: kein Modell verfügbar. Letzter Fehler: '+lastErr+' — aktuell gültig: openai/gpt-oss-20b, openai/gpt-oss-120b (+ dynamische Liste via /models, siehe https://console.groq.com/docs/deprecations — llama-3.1/3.3, mixtral, gemma2 sind abgeschaltet)');
 }
 async function openRouterChatWithFallback(key, prompt, temperature=0.4){
   let lastErr='';
@@ -343,7 +348,7 @@ async function openRouterChatWithFallback(key, prompt, temperature=0.4){
   const tryList=preferred ? [preferred, ...OPENROUTER_FALLBACK.filter(m=>m!==preferred)] : OPENROUTER_FALLBACK;
   for(const m of tryList){
     try{
-      const r=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST', headers:{'Content-Type':'application/json','Authorization':'Bearer '+key,'HTTP-Referer':location.href,'X-Title':'KI-Zeitung'}, body:JSON.stringify({model:m, messages:[{role:'user',content:prompt}], temperature})});
+      const r=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST', headers:{'Content-Type':'application/json','Authorization':'Bearer '+key,'HTTP-Referer':appReferer(),'X-Title':'KI-Zeitung'}, body:JSON.stringify({model:m, messages:[{role:'user',content:prompt}], temperature})});
       if(!r.ok){ const txt=await r.text(); if(txt.toLowerCase().includes('model')||txt.toLowerCase().includes('not found')||r.status===404||r.status===400) { lastErr=m+': '+txt.slice(0,140); continue; } throw new Error(txt.slice(0,180)); }
       const j=await r.json(); const t=j.choices?.[0]?.message?.content; if(!t) throw new Error('leer'); return {text:t, model:m};
     }catch(e){ lastErr=e.message; }
@@ -405,7 +410,7 @@ setTimeout(()=>{ loadCloudKey(); refreshModels(); },400);
 async function refreshModels(){
   const prov=$('#cloud-provider').value;
   const sel=$('#model-select'); const hint=$('#model-hint');
-  if(prov!=='openrouter'){ sel.style.display='none'; hint.textContent='Groq/HF: Modell wird automatisch gewählt (aktuell gpt-oss-20b/120b). OpenRouter bietet echtes FREE-Dropdown.'; return; }
+  if(prov!=='openrouter'){ sel.style.display='none'; hint.textContent= prov==='groq' ? 'Groq: auto gpt-oss-20b/120b (+ dynamische /models-Liste). OpenRouter bietet echtes FREE-Dropdown.' : 'HF: auto Qwen2.5-7B via neuem HF-Router. OpenRouter bietet echtes FREE-Dropdown.'; return; }
   sel.style.display=''; sel.innerHTML='<option>lade FREE Modelle…</option>';
   hint.textContent='Lade OpenRouter FREE Modelle (ohne US-Großkonzern, europafreundlich, :free)...';
   try{
@@ -423,14 +428,21 @@ async function refreshModels(){
       sel.appendChild(o);
     });
     // Bevorzuge bekannte gute Free
-    const pref=['meta-llama/llama-3.1-8b-instruct:free','meta-llama/llama-3.3-70b-instruct:free','mistralai/mistral-7b-instruct:free','qwen/qwen-3-32b:free','google/gemma-3-27b-it:free','openai/gpt-oss-20b:free'];
+    const pref=['openai/gpt-oss-20b:free','meta-llama/llama-3.1-8b-instruct:free','mistralai/mistral-7b-instruct:free','qwen/qwen-3-32b:free','google/gemma-3-27b-it:free','openrouter/free'];
     for(const p of pref){ const found=[...sel.options].find(o=>o.value===p); if(found){ sel.value=p; break; } }
     const saved=localStorage.getItem('ki-zeitung-model'); if(saved && [...sel.options].some(o=>o.value===saved)) sel.value=saved;
     hint.textContent='✓ '+free.length+' FREE Modelle — gewählt: '+sel.value+' — Key von openrouter.ai/keys (free, ohne Karte).';
     sel.onchange=()=>{ localStorage.setItem('ki-zeitung-model', sel.value); hint.textContent='✓ gewählt: '+sel.value; };
   }catch(e){
-    sel.style.display='none';
-    hint.innerHTML='✗ OpenRouter Modelle laden fehlgeschlagen: '+e.message.replace(/</g,'&lt;')+' — Fallback nutzt statische Liste: '+OPENROUTER_FALLBACK.join(', ');
+    // Fallback: Dropdown TROTZDEM mit statischer Liste füllen, damit Auswahl funktional bleibt
+    sel.style.display=''; sel.innerHTML='';
+    OPENROUTER_FALLBACK.forEach(id=>{
+      const o=document.createElement('option'); o.value=id; o.textContent=id+' (Fallback)';
+      sel.appendChild(o);
+    });
+    const saved=localStorage.getItem('ki-zeitung-model'); if(saved && [...sel.options].some(o=>o.value===saved)) sel.value=saved;
+    sel.onchange=()=>{ localStorage.setItem('ki-zeitung-model', sel.value); hint.textContent='✓ gewählt (Fallback): '+sel.value; };
+    hint.innerHTML='⚠ Live-Liste fehlgeschlagen ('+e.message.replace(/</g,'&lt;')+') — Fallback-Liste aktiv ('+OPENROUTER_FALLBACK.length+' Modelle, inkl. openrouter/free als Notnagel). Auswahl bleibt funktional.';
   }
 }
 function onProviderChange(){
@@ -439,7 +451,7 @@ function onProviderChange(){
   const hint=$('#model-hint');
   if(prov==='openrouter') hint.textContent='OpenRouter FREE Dropdown lädt…';
   else if(prov==='groq') hint.textContent='Groq: auto gpt-oss-20b/120b (US, aber schnell) — für maximale Freiheit OpenRouter wählen.';
-  else hint.textContent='HF: Qwen2.5-7B — OpenRouter (FREE) ist freieste Lösung.';
+  else hint.textContent='HF-Router: Qwen2.5-7B via router.huggingface.co/v1 (alt api-inference ist abgeschaltet).';
 }
 
 async function testCloudLLM(){
@@ -461,8 +473,9 @@ async function testCloudLLM(){
       try{ const probe=await groqChatWithFallback(key, 'Sage nur: ok', 0, 8); msg+=' Probe: '+probe.model+' antwortet.'; }catch(e){ msg+=' Probe fehlgeschlagen: '+e.message.slice(0,60); }
     } else if(prov==='huggingface'){
       const r=await fetch('https://huggingface.co/api/whoami',{headers:{'Authorization':'Bearer '+key}});
-      if(!r.ok) throw new Error('HF '+r.status);
-      msg='✓ HF Token ok — nutze Qwen/Qwen2.5-7B-Instruct (Fallback automatisch).';
+      if(!r.ok) throw new Error('HF Token ungültig ('+r.status+') — neuen Fine-grained Token mit Inference-Providers-Recht anlegen.');
+      try{ const probe=await hfChatWithRouter(key, 'Sage nur: ok', 0, 8); msg='✓ HF-Router ok — Probe: '+probe.model+' antwortet.'; }
+      catch(e){ msg='✓ HF Token ok, aber Router-Probe fehlgeschlagen: '+e.message.slice(0,120)+' — Token braucht Inference-Providers-Recht.'; }
     } else {
       const r=await fetch('https://openrouter.ai/api/v1/key',{headers:{'Authorization':'Bearer '+key}});
       // OpenRouter hat kein /models free filter ohne Key, probiere chat
@@ -489,11 +502,8 @@ async function runCloudSynthese(){
   try{
     let res=null;
     if(prov==='groq') res=await groqChatWithFallback(key, prompt, 0.4, 400);
-    else if(prov==='huggingface'){
-      const r=await fetch('https://api-inference.huggingface.co/models/Qwen/Qwen2.5-7B-Instruct',{method:'POST', headers:{'Authorization':'Bearer '+key,'Content-Type':'application/json'}, body:JSON.stringify({inputs:prompt, parameters:{max_new_tokens:320}})});
-      if(!r.ok) throw new Error((await r.text()).slice(0,200));
-      const j=await r.json(); const t=Array.isArray(j)?j[0]?.generated_text||JSON.stringify(j):JSON.stringify(j); res={text:t, model:'Qwen2.5-7B'};
-    } else res=await openRouterChatWithFallback(key, prompt, 0.4);
+    else if(prov==='huggingface') res=await hfChatWithRouter(key, prompt, 0.4, 400);
+    else res=await openRouterChatWithFallback(key, prompt, 0.4);
     const box=document.createElement('div'); box.className='notice'; box.style.borderColor='#34d399';
     box.innerHTML='<b>☁️ Cloud-Synthese ('+prov+' → '+res.model+'):</b><br>'+res.text.replace(/</g,'&lt;')+'<br><span style="font-size:10px;color:#6b7a96">Auto-Fallback aktiv — Modell automatisch gewählt, Mock bleibt aktiv.</span>';
     $('#synthese').prepend(box); setTimeout(()=>box.remove(),18000);
@@ -547,11 +557,8 @@ async function searchTopicWithLLM(){
   try{
     let res=null;
     if(prov==='groq') res=await groqChatWithFallback(key, prompt, 0.45, 520);
-    else if(prov==='huggingface'){
-      const r=await fetch('https://api-inference.huggingface.co/models/Qwen/Qwen2.5-7B-Instruct',{method:'POST', headers:{'Authorization':'Bearer '+key,'Content-Type':'application/json'}, body:JSON.stringify({inputs:prompt, parameters:{max_new_tokens:480}})});
-      if(!r.ok) throw new Error((await r.text()).slice(0,180));
-      const j=await r.json(); const t=Array.isArray(j)?j[0]?.generated_text||JSON.stringify(j):JSON.stringify(j); res={text:t, model:'Qwen2.5-7B'};
-    } else res=await openRouterChatWithFallback(key, prompt, 0.45);
+    else if(prov==='huggingface') res=await hfChatWithRouter(key, prompt, 0.45, 520);
+    else res=await openRouterChatWithFallback(key, prompt, 0.45);
     document.getElementById('llm-searching')?.remove();
     const box=document.createElement('div'); box.style.cssText='margin-top:8px;background:#0e1a14;border:1px solid #34d399;border-radius:10px;padding:10px 12px';
     box.innerHTML='<b>☁️ Cloud-Recherche "'+q.replace(/</g,'&lt;')+'" ('+prov+' → '+res.model+'):</b><br><div style="white-space:pre-wrap;margin-top:6px">'+res.text.replace(/</g,'&lt;')+'</div><div style="margin-top:8px;display:flex;gap:8px"><button class=btn>Kopieren</button><button class=btn onclick="exportSearchPDF()">Als PDF</button></div>';
