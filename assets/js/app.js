@@ -349,7 +349,7 @@ async function openRouterChatWithFallback(key, prompt, temperature=0.4){
   for(const m of tryList){
     try{
       const r=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST', headers:{'Content-Type':'application/json','Authorization':'Bearer '+key,'HTTP-Referer':appReferer(),'X-Title':'KI-Zeitung'}, body:JSON.stringify({model:m, messages:[{role:'user',content:prompt}], temperature})});
-      if(!r.ok){ const txt=await r.text(); if(txt.toLowerCase().includes('model')||txt.toLowerCase().includes('not found')||r.status===404||r.status===400) { lastErr=m+': '+txt.slice(0,140); continue; } throw new Error(txt.slice(0,180)); }
+      if(!r.ok){ const txt=await r.text(); if(r.status===401||r.status===403) throw new Error('OpenRouter: Key abgelehnt (401 User not found) — der Key ist ungültig oder wurde gelöscht. Neuen Key auf openrouter.ai/keys erzeugen, ins gelbe Feld einfügen, Speichern, erneut testen.'); if(txt.toLowerCase().includes('model')||txt.toLowerCase().includes('not found')||r.status===404||r.status===400) { lastErr=m+': '+txt.slice(0,140); continue; } throw new Error(txt.slice(0,180)); }
       const j=await r.json(); const t=j.choices?.[0]?.message?.content; if(!t) throw new Error('leer'); return {text:t, model:m};
     }catch(e){ lastErr=e.message; }
   }
@@ -478,8 +478,7 @@ async function testCloudLLM(){
       catch(e){ msg='✓ HF Token ok, aber Router-Probe fehlgeschlagen: '+e.message.slice(0,120)+' — Token braucht Inference-Providers-Recht.'; }
     } else {
       const r=await fetch('https://openrouter.ai/api/v1/key',{headers:{'Authorization':'Bearer '+key}});
-      // OpenRouter hat kein /models free filter ohne Key, probiere chat
-      if(!r.ok && r.status!==404){ /* ignore */ }
+      if(r.status===401||r.status===403) throw new Error('OpenRouter: Key ungültig (401 User not found) — neuen Key auf openrouter.ai/keys erzeugen, ins gelbe Feld einfügen, Speichern. Der alte Key wurde evtl. gelöscht oder neu generiert.');
       const probe=await openRouterChatWithFallback(key, 'Sage nur: ok').catch(e=>{ throw new Error('OpenRouter Probe: '+e.message); });
       msg='✓ OpenRouter ok — Probe: '+probe.model;
     }
